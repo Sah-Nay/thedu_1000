@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revisão</title>
+  <style>
+    body {
+      background-color: #33130044; /* cor de fundo azul claro */
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    button {
+      background-color: #33130044;
+      color: rgb(0, 0, 0);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #f4884b44;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    #textContainer, #accessDenied {
+      display: none;
+      background-color: #33130044;
+      padding: 20px;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      margin-top: 20px;      
+    }
+
+    a {
+      color: #333030;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+   <h2>Digite o código de acesso para abrir o formulário</h2>
+  <div id="accessContainer">
+    <input type="password" id="accessCode" placeholder="Código de acesso" />
+    <button id="submitAccess">Entrar</button>
+    <p id="accessDenied" style="color: red;">Código incorreto. Tente novamente.</p>
+  </div>
+
+  <div id="textContainer">
+     <h1>Selecione a a matéria e bons estudos</h1>
+   
+<ul>
+    <li><a href="#bi">biologia</a></li>
+    <li><a href="#qu">química</a></li>
+    <li><a href="#ma">matemática</a></li>
+    <li><a href="#hi">história</a></li>
+    <li><a href="#ge">geografia</a></li>
+    <li><a href="#li">literatura</a></li>
+    <li><a href="#re">redação</a></li>
+    <li><a href="#es">espanhol</a></li>
+    <li><a href="#fi">fisica</a></li>
+    <li><a href="#fi">filosofia</a></li>
+    <li><a href="#so">sociologia</a></li>
+    <li><a href="#po">português</a></li>
+</ul>
+<br><br>
+
+<h2 id="bi">biologia</h2>
+<h2 id="qu">química</h2>
+<h2 id="ma">matemática</h2>
+<ul>
+    <li><a href="/dtm/qm01.html">QM01: Porcentagem</a></li >""
+</ul>
+<h2 id="hi">história</h2>
+<h2 id="ge">geografia</h2>
+<h2 id="li">literatura</h2>
+<h2 id="re">redação</h2>
+<h2 id="es">espanhol</h2>
+<h2 id="fi">fisica</h2>
+<h2 id="fi">filosofia</h2>
+<h2 id="so">sociologia</h2>
+<h2 id="po">português</h2>
+  </div>
+
+  <script>
+    const correctAccessCode = "0444"; // Defina aqui o código de acesso desejado
+
+    const accessContainer = document.getElementById('accessContainer');
+    const formContainer = document.getElementById('textContainer');
+    const accessDenied = document.getElementById('accessDenied');
+    const accessCodeInput = document.getElementById('accessCode');
+    const submitAccessBtn = document.getElementById('submitAccess');
+
+    submitAccessBtn.addEventListener('click', function() {
+      const enteredCode = accessCodeInput.value.trim();
+      if (enteredCode === correctAccessCode) {
+        accessDenied.style.display = 'none';
+        accessContainer.style.display = 'none';
+        formContainer.style.display = 'block';
+      } else {
+        accessDenied.style.display = 'block';
+      }
+    });
+
+   
+  </script>
+</body>
+</html>

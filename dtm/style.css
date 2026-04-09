@@ -1,0 +1,59 @@
+@media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui título em telas pequenas */ }
+  .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
+  textarea { height: 25px; /* diminui altura do textarea em telas pequenas */ }
+}
+
+body {
+  background-color: #33130044;
+  font-family: Arial, sans-serif;
+  margin: 30px;
+}
+
+.pergunta {
+  margin-bottom: 20px;
+}
+
+.resposta {
+  background-color: #5767641b;
+  margin-left: 20px;
+  border-left: 2px solid hsl(114, 79%, 21%);
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+textarea {
+  background-color: #2877661b;
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 5px;
+  padding: 6px 12px;
+  background: #33130044;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #33130083;
+}
+
+.btn-excluir {
+  margin-left: 10px;
+  background: #33130044;
+}
+
+.dataHora {
+  font-size: 0.9em;
+  color: #1b000044;
+  margin-left: 10px;
+}
+
+#nomeUsuario {
+  background-color: #2877661b;
+  font-weight: bold;
+  color: #000000;
+}

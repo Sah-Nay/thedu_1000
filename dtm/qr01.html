@@ -119,22 +119,22 @@ button:hover {
   <button id="exportar">Exportar Respostas</button>
   <button id="limpar">Limpar Respostas</button>
 
-  <!-- Campo para n�mero do WhatsApp -->
-  <input type="text" id="numeroWhatsApp" placeholder="Digite seu n�mero do WhatsApp (ex: 5511999999999)">
+  <!-- Campo para número do WhatsApp -->
+  <input type="text" id="numeroWhatsApp" placeholder="Digite seu número do WhatsApp (ex: 5511999999999)">
   <button id="enviarWhatsApp">Enviar Respostas para WhatsApp</button>
   
   <script>
-  // Vari�vel global para armazenar o nome
-let nomeGlobal = "An�nimo";
+  // Variável global para armazenar o nome
+let nomeGlobal = "Anônimo";
 
 // Perguntas fixas definidas pelo criador
 const perguntasFixas = [ 
-      "01: Leia o texto a seguir e responda:\n\nA import�ncia da explora��o espacial para o avan�o cient�fico e tecnol�gico da humanidade\n\nA explora��o espacial representa um marco fundamental na busca pelo conhecimento humano. Desde o lan�amento do Sputnik em 1957 at� as miss�es contempor�neas da NASA e da ESA, o espa�o tem sido palco de descobertas que transcendem fronteiras nacionais e ampliem horizontes cient�ficos. Argumenta-se que investir em astronomia e tecnologia espacial n�o � um luxo, mas uma necessidade estrat�gica.\n\nPrimeiramente, os avan�os tecnol�gicos decorrentes da corrida espacial impactam diretamente a vida cotidiana. Sat�lites de comunica��o, GPS e previs�es meteorol�gicas s�o exemplos de benef�cios pr�ticos que nasceram da pesquisa espacial. Al�m disso, a astronomia contribui para a compreens�o da origem do universo e da pr�pria vida, fortalecendo o papel da ci�ncia como guia para o futuro.\n\nPor outro lado, cr�ticos apontam os altos custos das miss�es espaciais, sugerindo que tais recursos poderiam ser destinados a problemas sociais urgentes. Contudo, essa vis�o ignora o car�ter multiplicador dos investimentos em ci�ncia, que geram inova��o, empregos e solu��es aplic�veis em diversas �reas.\n\nPortanto, a explora��o espacial deve ser vista como um investimento no progresso humano. Ao ampliar o conhecimento e fomentar tecnologias, a astronomia reafirma seu papel essencial na constru��o de um futuro sustent�vel e inovador.\n\na)Qual o tema do texto?",
-      "01: b)Localize a introdu��o e identifique o tema central?",
-      "01: c)Aponte qual � a tese defendida pelo autor?",
+      "01: Leia o texto a seguir e responda:\n\nA importância da explorao espacial para o avano cientfico e tecnolgico da humanidade\n\nA explorao espacial representa um marco fundamental na busca pelo conhecimento humano. Desde o lanamento do Sputnik em 1957 at as misses contemporneas da NASA e da ESA, o espao tem sido palco de descobertas que transcendem fronteiras nacionais e ampliem horizontes cientficos. Argumenta-se que investir em astronomia e tecnologia espacial no um luxo, mas uma necessidade estratgica.\n\nPrimeiramente, os avanos tecnolgicos decorrentes da corrida espacial impactam diretamente a vida cotidiana. Satlites de comunicao, GPS e previses meteorolgicas so exemplos de benefcios prticos que nasceram da pesquisa espacial. Alm disso, a astronomia contribui para a compreenso da origem do universo e da prpria vida, fortalecendo o papel da cincia como guia para o futuro.\n\nPor outro lado, crticos apontam os altos custos das misses espaciais, sugerindo que tais recursos poderiam ser destinados a problemas sociais urgentes. Contudo, essa viso ignora o carter multiplicador dos investimentos em cincia, que geram inovao, empregos e solues aplicveis em diversasreas.\n\nPortanto, a explorao espacial deve ser vista como um investimento no progresso humano. Ao ampliar o conhecimento e fomentar tecnologias, a astronomia reafirma seu papel essencial na construo de um futuro sustentvel e inovador.\n\na)Qual o tema do texto?",
+      "01: b)Localize a introduo e identifique o tema central?",
+      "01: c)Aponte qual a tese defendida pelo autor?",
       "01: d)Cite dois elementos que sustentam a tese",
-      "01: e) Indique a conclus�o e explique como ela retoma a tese.",
-      "02: Baseado no texto acima, crie um reda��o dissertativo-argumentativa com o mesmo tema acima, com sua pr�pria tese e argumentos. capriche na conclu�o. Boa sorte!",
+      "01: e) Indique a concluso e explique como ela retoma a tese.",
+      "02: Baseado no texto acima, crie um redao dissertativo-argumentativa com o mesmo tema acima, com sua prpria tese e argumentos. capriche na concluo. Boa sorte!",
 ];
 
 // Carregar respostas salvas
@@ -154,7 +154,7 @@ function confirmarNome() {
     nomeGlobal = nome;
     alert("Nome confirmado: " + nomeGlobal);
   } else {
-    alert("Voc� n�o digitou um nome, ser� usado 'An�nimo'.");
+    alert("Você não digitou um nome, será usado 'Anônimo'.");
   }
 }
 
@@ -278,7 +278,7 @@ function enviarParaWhatsApp() {
   });
 
   if (mensagem === `Respostas de ${nomeGlobal}:\n\n`) {
-    alert("N�o h� respostas para enviar.");
+    alert("Não há respostas para enviar.");
     return;
   }
 

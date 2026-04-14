@@ -1,18 +1,54 @@
-<head>
+﻿<head>
   <meta lang="pt-BR">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QR-01</title>
   <style>
-    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui título em telas pequenas */ }
+    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui tÃ­tulo em telas pequenas */ }
   .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
   textarea { height: 25px; /* diminui altura do textarea em telas pequenas */ }
 }
 
 body {
-  background-color: #33130044;
-  font-family: Arial, sans-serif;
-  margin: 30px;
-}
+            background-color: #33130044;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            max-width: 1080px;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        a {
+            color: #1e724d;
+            word-break: break-word;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            body {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            ul {
+                padding-left: 1rem;
+            }
+        }
 
 h3 {
   white-space: pre-wrap;
@@ -72,7 +108,7 @@ button:hover {
   </style>
 </head>
 <body>
-  <h1>QR01- Testando conhecimento</h1>
+  <h1>QR01- Testando conhecimento 01</h1>
 
   <!-- Campo de nome global -->
   <input type="text" id="nomeUsuario" placeholder="Digite seu nome...">
@@ -83,22 +119,22 @@ button:hover {
   <button id="exportar">Exportar Respostas</button>
   <button id="limpar">Limpar Respostas</button>
 
-  <!-- Campo para número do WhatsApp -->
-  <input type="text" id="numeroWhatsApp" placeholder="Digite seu número do WhatsApp (ex: 5511999999999)">
+  <!-- Campo para nÃºmero do WhatsApp -->
+  <input type="text" id="numeroWhatsApp" placeholder="Digite seu nÃºmero do WhatsApp (ex: 5511999999999)">
   <button id="enviarWhatsApp">Enviar Respostas para WhatsApp</button>
   
   <script>
-  // Variável global para armazenar o nome
-let nomeGlobal = "Anônimo";
+  // VariÃ¡vel global para armazenar o nome
+let nomeGlobal = "AnÃ´nimo";
 
 // Perguntas fixas definidas pelo criador
 const perguntasFixas = [ 
-      "01: Leia o texto a seguir e responda:\n\nA importância da exploração espacial para o avanço científico e tecnológico da humanidade\n\nA exploração espacial representa um marco fundamental na busca pelo conhecimento humano. Desde o lançamento do Sputnik em 1957 até as missões contemporâneas da NASA e da ESA, o espaço tem sido palco de descobertas que transcendem fronteiras nacionais e ampliem horizontes científicos. Argumenta-se que investir em astronomia e tecnologia espacial não é um luxo, mas uma necessidade estratégica.\n\nPrimeiramente, os avanços tecnológicos decorrentes da corrida espacial impactam diretamente a vida cotidiana. Satélites de comunicação, GPS e previsões meteorológicas são exemplos de benefícios práticos que nasceram da pesquisa espacial. Além disso, a astronomia contribui para a compreensão da origem do universo e da própria vida, fortalecendo o papel da ciência como guia para o futuro.\n\nPor outro lado, críticos apontam os altos custos das missões espaciais, sugerindo que tais recursos poderiam ser destinados a problemas sociais urgentes. Contudo, essa visão ignora o caráter multiplicador dos investimentos em ciência, que geram inovação, empregos e soluções aplicáveis em diversas áreas.\n\nPortanto, a exploração espacial deve ser vista como um investimento no progresso humano. Ao ampliar o conhecimento e fomentar tecnologias, a astronomia reafirma seu papel essencial na construção de um futuro sustentável e inovador.\n\na)Qual o tema do texto?",
-      "01: b)Localize a introdução e identifique o tema central?",
-      "01: c)Aponte qual é a tese defendida pelo autor?",
+      "01: Leia o texto a seguir e responda:\n\nA importÃ¢ncia da exploraÃ§Ã£o espacial para o avanÃ§o cientÃ­fico e tecnolÃ³gico da humanidade\n\nA exploraÃ§Ã£o espacial representa um marco fundamental na busca pelo conhecimento humano. Desde o lanÃ§amento do Sputnik em 1957 atÃ© as missÃµes contemporÃ¢neas da NASA e da ESA, o espaÃ§o tem sido palco de descobertas que transcendem fronteiras nacionais e ampliem horizontes cientÃ­ficos. Argumenta-se que investir em astronomia e tecnologia espacial nÃ£o Ã© um luxo, mas uma necessidade estratÃ©gica.\n\nPrimeiramente, os avanÃ§os tecnolÃ³gicos decorrentes da corrida espacial impactam diretamente a vida cotidiana. SatÃ©lites de comunicaÃ§Ã£o, GPS e previsÃµes meteorolÃ³gicas sÃ£o exemplos de benefÃ­cios prÃ¡ticos que nasceram da pesquisa espacial. AlÃ©m disso, a astronomia contribui para a compreensÃ£o da origem do universo e da prÃ³pria vida, fortalecendo o papel da ciÃªncia como guia para o futuro.\n\nPor outro lado, crÃ­ticos apontam os altos custos das missÃµes espaciais, sugerindo que tais recursos poderiam ser destinados a problemas sociais urgentes. Contudo, essa visÃ£o ignora o carÃ¡ter multiplicador dos investimentos em ciÃªncia, que geram inovaÃ§Ã£o, empregos e soluÃ§Ãµes aplicÃ¡veis em diversas Ã¡reas.\n\nPortanto, a exploraÃ§Ã£o espacial deve ser vista como um investimento no progresso humano. Ao ampliar o conhecimento e fomentar tecnologias, a astronomia reafirma seu papel essencial na construÃ§Ã£o de um futuro sustentÃ¡vel e inovador.\n\na)Qual o tema do texto?",
+      "01: b)Localize a introduÃ§Ã£o e identifique o tema central?",
+      "01: c)Aponte qual Ã© a tese defendida pelo autor?",
       "01: d)Cite dois elementos que sustentam a tese",
-      "01: e) Indique a conclusão e explique como ela retoma a tese.",
-      "02: Baseado no texto acima, crie um redação dissertativo-argumentativa com o mesmo tema acima, com sua própria tese e argumentos. capriche na concluão. Boa sorte!",
+      "01: e) Indique a conclusÃ£o e explique como ela retoma a tese.",
+      "02: Baseado no texto acima, crie um redaÃ§Ã£o dissertativo-argumentativa com o mesmo tema acima, com sua prÃ³pria tese e argumentos. capriche na concluÃ£o. Boa sorte!",
 ];
 
 // Carregar respostas salvas
@@ -118,7 +154,7 @@ function confirmarNome() {
     nomeGlobal = nome;
     alert("Nome confirmado: " + nomeGlobal);
   } else {
-    alert("Você não digitou um nome, será usado 'Anônimo'.");
+    alert("VocÃª nÃ£o digitou um nome, serÃ¡ usado 'AnÃ´nimo'.");
   }
 }
 
@@ -145,11 +181,11 @@ function mostrarPergunta(texto, respostas) {
   });
   divPergunta.appendChild(campoResposta);
 
-  // Botão de resposta
+  // BotÃ£o de resposta
   const botaoResposta = document.createElement("button");
   botaoResposta.textContent = "Responder";
 
-  // Div para respostas (abaixo da caixa e botão)
+  // Div para respostas (abaixo da caixa e botÃ£o)
   const divRespostas = document.createElement("div");
 
   botaoResposta.onclick = function() {
@@ -166,7 +202,7 @@ function mostrarPergunta(texto, respostas) {
   };
   divPergunta.appendChild(botaoResposta);
 
-  // Agora adiciona as respostas abaixo da caixa e botão
+  // Agora adiciona as respostas abaixo da caixa e botÃ£o
   respostas.forEach((r, i) => {
     const resp = criarResposta(r, texto, i);
     divRespostas.appendChild(resp);
@@ -186,7 +222,7 @@ function criarResposta(textoResposta, pergunta, index) {
 
   const del = document.createElement("button");
   del.classList.add("btn-excluir");
-  del.textContent = "✖";
+  del.textContent = "âœ–";
   del.title = "Excluir resposta";
   del.onclick = function() { excluirResposta(pergunta, index, resp); };
   resp.appendChild(del);
@@ -222,7 +258,7 @@ function limparRespostas() {
 function enviarParaWhatsApp() {
   const numero = document.getElementById("numeroWhatsApp").value.trim();
   if (!numero) {
-    alert("Por favor, digite seu número do WhatsApp.");
+    alert("Por favor, digite seu nÃºmero do WhatsApp.");
     return;
   }
 
@@ -242,7 +278,7 @@ function enviarParaWhatsApp() {
   });
 
   if (mensagem === `Respostas de ${nomeGlobal}:\n\n`) {
-    alert("Não há respostas para enviar.");
+    alert("NÃ£o hÃ¡ respostas para enviar.");
     return;
   }
 
@@ -265,3 +301,5 @@ function exportRespostas() {
 </script>
 </body>
 </html>
+
+

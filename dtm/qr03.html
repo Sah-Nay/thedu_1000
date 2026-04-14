@@ -1,18 +1,54 @@
-<head>
+﻿<head>
   <meta lang="pt-BR">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QR-01</title>
   <style>
-    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui título em telas pequenas */ }
+    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui tÃ­tulo em telas pequenas */ }
   .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
   textarea { height: 25px; /* diminui altura do textarea em telas pequenas */ }
 }
 
 body {
-  background-color: #33130044;
-  font-family: Arial, sans-serif;
-  margin: 30px;
-}
+            background-color: #33130044;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            max-width: 1080px;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        a {
+            color: #1e724d;
+            word-break: break-word;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            body {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            ul {
+                padding-left: 1rem;
+            }
+        }
 
 h3 {
   white-space: pre-wrap;
@@ -72,7 +108,7 @@ button:hover {
   </style>
 </head>
 <body>
-  <h1>QR01- Testando conhecimento</h1>
+  <h1>QR01- Testando conhecimento 03</h1>
 
   <!-- Campo de nome global -->
   <input type="text" id="nomeUsuario" placeholder="Digite seu nome...">
@@ -83,22 +119,22 @@ button:hover {
   <button id="exportar">Exportar Respostas</button>
   <button id="limpar">Limpar Respostas</button>
 
-  <!-- Campo para número do WhatsApp -->
-  <input type="text" id="numeroWhatsApp" placeholder="Digite seu número do WhatsApp (ex: 5511999999999)">
+  <!-- Campo para nÃºmero do WhatsApp -->
+  <input type="text" id="numeroWhatsApp" placeholder="Digite seu nÃºmero do WhatsApp (ex: 5511999999999)">
   <button id="enviarWhatsApp">Enviar Respostas para WhatsApp</button>
   
   <script>
-  // Variável global para armazenar o nome
-let nomeGlobal = "Anônimo";
+  // VariÃ¡vel global para armazenar o nome
+let nomeGlobal = "AnÃ´nimo";
 
 // Perguntas fixas definidas pelo criador
 const perguntasFixas = [ 
-      "01: Leia o texto a seguir e responda:\n\nO papel da inovação tecnológica no desenvolvimento econômico e social\n\nO desenvolvimento econômico e social é um objetivo central das nações modernas, e a inovação tecnológica surge como motor essencial desse processo. Em um mundo cada vez mais globalizado, países que investem em ciência e tecnologia conseguem ampliar sua competitividade e oferecer melhores condições de vida à população.\n\nPrimeiramente, a tecnologia promove eficiência e produtividade. Setores como agricultura, saúde e educação são profundamente beneficiados por inovações que reduzem custos e ampliam o acesso. Por exemplo, a telemedicina permite atendimento em regiões remotas, enquanto plataformas digitais democratizam o conhecimento.\n\nAlém disso, a inovação tecnológica impulsiona a criação de empregos qualificados e fomenta o empreendedorismo. Startups e empresas de base tecnológica tornam-se protagonistas na geração de riqueza e na transformação social. Contudo, é preciso destacar que o desenvolvimento tecnológico deve ser acompanhado de políticas inclusivas, para evitar a ampliação das desigualdades sociais.\n\nPortanto, a inovação tecnológica é um pilar do desenvolvimento sustentável. Ao promover avanços econômicos e sociais, ela reafirma a importância de investir em ciência e educação como caminhos para a construção de uma sociedade mais justa e próspera.\n\na)Qual o tema do texto?",
-      "01: b)Localize a introdução e identifique o tema central?",
-      "01: c)Aponte qual é a tese defendida pelo autor?",
+      "01: Leia o texto a seguir e responda:\n\nO papel da inovaÃ§Ã£o tecnolÃ³gica no desenvolvimento econÃ´mico e social\n\nO desenvolvimento econÃ´mico e social Ã© um objetivo central das naÃ§Ãµes modernas, e a inovaÃ§Ã£o tecnolÃ³gica surge como motor essencial desse processo. Em um mundo cada vez mais globalizado, paÃ­ses que investem em ciÃªncia e tecnologia conseguem ampliar sua competitividade e oferecer melhores condiÃ§Ãµes de vida Ã  populaÃ§Ã£o.\n\nPrimeiramente, a tecnologia promove eficiÃªncia e produtividade. Setores como agricultura, saÃºde e educaÃ§Ã£o sÃ£o profundamente beneficiados por inovaÃ§Ãµes que reduzem custos e ampliam o acesso. Por exemplo, a telemedicina permite atendimento em regiÃµes remotas, enquanto plataformas digitais democratizam o conhecimento.\n\nAlÃ©m disso, a inovaÃ§Ã£o tecnolÃ³gica impulsiona a criaÃ§Ã£o de empregos qualificados e fomenta o empreendedorismo. Startups e empresas de base tecnolÃ³gica tornam-se protagonistas na geraÃ§Ã£o de riqueza e na transformaÃ§Ã£o social. Contudo, Ã© preciso destacar que o desenvolvimento tecnolÃ³gico deve ser acompanhado de polÃ­ticas inclusivas, para evitar a ampliaÃ§Ã£o das desigualdades sociais.\n\nPortanto, a inovaÃ§Ã£o tecnolÃ³gica Ã© um pilar do desenvolvimento sustentÃ¡vel. Ao promover avanÃ§os econÃ´micos e sociais, ela reafirma a importÃ¢ncia de investir em ciÃªncia e educaÃ§Ã£o como caminhos para a construÃ§Ã£o de uma sociedade mais justa e prÃ³spera.\n\na)Qual o tema do texto?",
+      "01: b)Localize a introduÃ§Ã£o e identifique o tema central?",
+      "01: c)Aponte qual Ã© a tese defendida pelo autor?",
       "01: d)Cite dois elementos que sustentam a tese",
-      "01: e) Indique a conclusão e explique como ela retoma a tese.",
-      "02: Baseado no texto acima, crie um redação dissertativo-argumentativa com o mesmo tema acima, com sua própria tese e argumentos. capriche na concluão. Boa sorte!",
+      "01: e) Indique a conclusÃ£o e explique como ela retoma a tese.",
+      "02: Baseado no texto acima, crie um redaÃ§Ã£o dissertativo-argumentativa com o mesmo tema acima, com sua prÃ³pria tese e argumentos. capriche na concluÃ£o. Boa sorte!",
 ];
 
 // Carregar respostas salvas
@@ -118,7 +154,7 @@ function confirmarNome() {
     nomeGlobal = nome;
     alert("Nome confirmado: " + nomeGlobal);
   } else {
-    alert("Você não digitou um nome, será usado 'Anônimo'.");
+    alert("VocÃª nÃ£o digitou um nome, serÃ¡ usado 'AnÃ´nimo'.");
   }
 }
 
@@ -145,11 +181,11 @@ function mostrarPergunta(texto, respostas) {
   });
   divPergunta.appendChild(campoResposta);
 
-  // Botão de resposta
+  // BotÃ£o de resposta
   const botaoResposta = document.createElement("button");
   botaoResposta.textContent = "Responder";
 
-  // Div para respostas (abaixo da caixa e botão)
+  // Div para respostas (abaixo da caixa e botÃ£o)
   const divRespostas = document.createElement("div");
 
   botaoResposta.onclick = function() {
@@ -166,7 +202,7 @@ function mostrarPergunta(texto, respostas) {
   };
   divPergunta.appendChild(botaoResposta);
 
-  // Agora adiciona as respostas abaixo da caixa e botão
+  // Agora adiciona as respostas abaixo da caixa e botÃ£o
   respostas.forEach((r, i) => {
     const resp = criarResposta(r, texto, i);
     divRespostas.appendChild(resp);
@@ -186,7 +222,7 @@ function criarResposta(textoResposta, pergunta, index) {
 
   const del = document.createElement("button");
   del.classList.add("btn-excluir");
-  del.textContent = "✖";
+  del.textContent = "âœ–";
   del.title = "Excluir resposta";
   del.onclick = function() { excluirResposta(pergunta, index, resp); };
   resp.appendChild(del);
@@ -222,7 +258,7 @@ function limparRespostas() {
 function enviarParaWhatsApp() {
   const numero = document.getElementById("numeroWhatsApp").value.trim();
   if (!numero) {
-    alert("Por favor, digite seu número do WhatsApp.");
+    alert("Por favor, digite seu nÃºmero do WhatsApp.");
     return;
   }
 
@@ -242,7 +278,7 @@ function enviarParaWhatsApp() {
   });
 
   if (mensagem === `Respostas de ${nomeGlobal}:\n\n`) {
-    alert("Não há respostas para enviar.");
+    alert("NÃ£o hÃ¡ respostas para enviar.");
     return;
   }
 
@@ -265,3 +301,5 @@ function exportRespostas() {
 </script>
 </body>
 </html>
+
+

@@ -1,0 +1,267 @@
+<head>
+  <meta lang="pt-BR">
+  <meta charset="UTF-8">
+  <title>QR-01</title>
+  <style>
+    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui título em telas pequenas */ }
+  .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
+  textarea { height: 25px; /* diminui altura do textarea em telas pequenas */ }
+}
+
+body {
+  background-color: #33130044;
+  font-family: Arial, sans-serif;
+  margin: 30px;
+}
+
+h3 {
+  white-space: pre-wrap;
+}
+
+.pergunta {
+  margin-bottom: 20px;
+}
+
+.resposta {
+  background-color: #5767641b;
+  margin-left: 20px;
+  border-left: 2px solid hsl(114, 79%, 21%);
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+textarea {
+  background-color: #2877661b;
+  width: 100%;
+  min-height: 30px;
+  height: auto;
+  margin-top: 10px;
+  overflow: hidden;
+  resize: none;
+}
+
+button {
+  margin-top: 5px;
+  padding: 6px 12px;
+  background: #33130044;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #33130083;
+}
+
+.btn-excluir {
+  margin-left: 10px;
+  background: #33130044;
+}
+
+.dataHora {
+  font-size: 0.9em;
+  color: #1b000044;
+  margin-left: 10px;
+}
+
+#nomeUsuario {
+  background-color: #2877661b;
+  font-weight: bold;
+  color: #000000;
+}
+  </style>
+</head>
+<body>
+  <h1>QR01- Testando conhecimento</h1>
+
+  <!-- Campo de nome global -->
+  <input type="text" id="nomeUsuario" placeholder="Digite seu nome...">
+  <button id="confirmarNome">Confirmar Nome</button>
+
+  <div id="lista-perguntas"></div>
+
+  <button id="exportar">Exportar Respostas</button>
+  <button id="limpar">Limpar Respostas</button>
+
+  <!-- Campo para número do WhatsApp -->
+  <input type="text" id="numeroWhatsApp" placeholder="Digite seu número do WhatsApp (ex: 5511999999999)">
+  <button id="enviarWhatsApp">Enviar Respostas para WhatsApp</button>
+  
+  <script>
+  // Variável global para armazenar o nome
+let nomeGlobal = "Anônimo";
+
+// Perguntas fixas definidas pelo criador
+const perguntasFixas = [ 
+      "01: Leia o texto a seguir e responda:\n\nO papel da inovação tecnológica no desenvolvimento econômico e social\n\nO desenvolvimento econômico e social é um objetivo central das nações modernas, e a inovação tecnológica surge como motor essencial desse processo. Em um mundo cada vez mais globalizado, países que investem em ciência e tecnologia conseguem ampliar sua competitividade e oferecer melhores condições de vida à população.\n\nPrimeiramente, a tecnologia promove eficiência e produtividade. Setores como agricultura, saúde e educação são profundamente beneficiados por inovações que reduzem custos e ampliam o acesso. Por exemplo, a telemedicina permite atendimento em regiões remotas, enquanto plataformas digitais democratizam o conhecimento.\n\nAlém disso, a inovação tecnológica impulsiona a criação de empregos qualificados e fomenta o empreendedorismo. Startups e empresas de base tecnológica tornam-se protagonistas na geração de riqueza e na transformação social. Contudo, é preciso destacar que o desenvolvimento tecnológico deve ser acompanhado de políticas inclusivas, para evitar a ampliação das desigualdades sociais.\n\nPortanto, a inovação tecnológica é um pilar do desenvolvimento sustentável. Ao promover avanços econômicos e sociais, ela reafirma a importância de investir em ciência e educação como caminhos para a construção de uma sociedade mais justa e próspera.\n\na)Qual o tema do texto?",
+      "01: b)Localize a introdução e identifique o tema central?",
+      "01: c)Aponte qual é a tese defendida pelo autor?",
+      "01: d)Cite dois elementos que sustentam a tese",
+      "01: e) Indique a conclusão e explique como ela retoma a tese.",
+      "02: Baseado no texto acima, crie um redação dissertativo-argumentativa com o mesmo tema acima, com sua própria tese e argumentos. capriche na concluão. Boa sorte!",
+];
+
+// Carregar respostas salvas
+window.onload = function() {
+  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
+  perguntasFixas.forEach(p => mostrarPergunta(p, dados[p] || []));
+
+  document.getElementById("exportar").addEventListener("click", exportRespostas);
+  document.getElementById("limpar").addEventListener("click", limparRespostas);
+  document.getElementById("confirmarNome").addEventListener("click", confirmarNome);
+  document.getElementById("enviarWhatsApp").addEventListener("click", enviarParaWhatsApp);
+};
+
+function confirmarNome() {
+  const nome = document.getElementById("nomeUsuario").value.trim();
+  if (nome !== "") {
+    nomeGlobal = nome;
+    alert("Nome confirmado: " + nomeGlobal);
+  } else {
+    alert("Você não digitou um nome, será usado 'Anônimo'.");
+  }
+}
+
+function mostrarPergunta(texto, respostas) {
+  const lista = document.getElementById("lista-perguntas");
+
+  const divPergunta = document.createElement("div");
+  divPergunta.classList.add("pergunta");
+
+  const titulo = document.createElement("h3");
+  titulo.textContent = texto;
+  divPergunta.appendChild(titulo);
+
+  // Caixa de resposta
+  const campoResposta = document.createElement("textarea");
+  campoResposta.placeholder = "Digite sua resposta...";
+  campoResposta.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+  });
+  campoResposta.addEventListener('focus', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+  });
+  divPergunta.appendChild(campoResposta);
+
+  // Botão de resposta
+  const botaoResposta = document.createElement("button");
+  botaoResposta.textContent = "Responder";
+
+  // Div para respostas (abaixo da caixa e botão)
+  const divRespostas = document.createElement("div");
+
+  botaoResposta.onclick = function() {
+    const textoResposta = campoResposta.value.trim();
+    if (textoResposta !== "") {
+      const dataHora = new Date().toLocaleString("pt-BR");
+      const respostaFormatada = `<strong>${nomeGlobal}</strong> respondeu: ${textoResposta} <span class="dataHora">(${dataHora})</span>`;
+      const idx = salvarResposta(texto, respostaFormatada);
+
+      const resp = criarResposta(respostaFormatada, texto, idx);
+      divRespostas.appendChild(resp);
+      campoResposta.value = "";
+    }
+  };
+  divPergunta.appendChild(botaoResposta);
+
+  // Agora adiciona as respostas abaixo da caixa e botão
+  respostas.forEach((r, i) => {
+    const resp = criarResposta(r, texto, i);
+    divRespostas.appendChild(resp);
+  });
+  divPergunta.appendChild(divRespostas);
+
+  lista.appendChild(divPergunta);
+}
+
+function criarResposta(textoResposta, pergunta, index) {
+  const resp = document.createElement("div");
+  resp.classList.add("resposta");
+
+  const span = document.createElement("span");
+  span.innerHTML = textoResposta; // usa innerHTML para renderizar <strong> e data/hora
+  resp.appendChild(span);
+
+  const del = document.createElement("button");
+  del.classList.add("btn-excluir");
+  del.textContent = "✖";
+  del.title = "Excluir resposta";
+  del.onclick = function() { excluirResposta(pergunta, index, resp); };
+  resp.appendChild(del);
+
+  return resp;
+}
+
+function salvarResposta(pergunta, resposta) {
+  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
+  if (!dados[pergunta]) {
+    dados[pergunta] = [];
+  }
+  dados[pergunta].push(resposta);
+  localStorage.setItem("respostas", JSON.stringify(dados));
+  return dados[pergunta].length - 1;
+}
+
+function excluirResposta(pergunta, index, elementoDOM) {
+  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
+  if (!dados[pergunta]) return;
+  dados[pergunta].splice(index, 1);
+  localStorage.setItem("respostas", JSON.stringify(dados));
+  elementoDOM.remove(); // remove do DOM sem reload
+}
+
+function limparRespostas() {
+  if (!confirm("Tem certeza que deseja apagar todas as respostas?")) return;
+  localStorage.removeItem("respostas");
+  document.getElementById("lista-perguntas").innerHTML = "";
+  perguntasFixas.forEach(p => mostrarPergunta(p, []));
+}
+
+function enviarParaWhatsApp() {
+  const numero = document.getElementById("numeroWhatsApp").value.trim();
+  if (!numero) {
+    alert("Por favor, digite seu número do WhatsApp.");
+    return;
+  }
+
+  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
+  let mensagem = `Respostas de ${nomeGlobal}:\n\n`;
+
+  perguntasFixas.forEach(pergunta => {
+    if (dados[pergunta] && dados[pergunta].length > 0) {
+      mensagem += `${pergunta}\n`;
+      dados[pergunta].forEach(resposta => {
+        // Remover tags HTML para texto plano
+        const respostaTexto = resposta.replace(/<[^>]*>/g, '');
+        mensagem += `- ${respostaTexto}\n`;
+      });
+      mensagem += '\n';
+    }
+  });
+
+  if (mensagem === `Respostas de ${nomeGlobal}:\n\n`) {
+    alert("Não há respostas para enviar.");
+    return;
+  }
+
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+  window.open(url, '_blank');
+}
+
+function exportRespostas() {
+  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
+  const blob = new Blob([JSON.stringify(dados, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "respostas.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>

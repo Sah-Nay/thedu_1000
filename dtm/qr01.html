@@ -1,7 +1,7 @@
 <head>
   <meta lang="pt-BR">
   <meta charset="UTF-8">
-  <title>QM01</title>
+  <title>QR-01</title>
   <style>
     @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui título em telas pequenas */ }
   .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
@@ -12,6 +12,10 @@ body {
   background-color: #33130044;
   font-family: Arial, sans-serif;
   margin: 30px;
+}
+
+h3 {
+  white-space: pre-wrap;
 }
 
 .pergunta {
@@ -29,8 +33,11 @@ body {
 textarea {
   background-color: #2877661b;
   width: 100%;
-  height: 30px;
+  min-height: 30px;
+  height: auto;
   margin-top: 10px;
+  overflow: hidden;
+  resize: none;
 }
 
 button {
@@ -65,7 +72,7 @@ button:hover {
   </style>
 </head>
 <body>
-  <h1>QM01 - Porcentagem</h1>
+  <h1>QR01- Testando conhecimento</h1>
 
   <!-- Campo de nome global -->
   <input type="text" id="nomeUsuario" placeholder="Digite seu nome...">
@@ -85,53 +92,13 @@ button:hover {
 let nomeGlobal = "Anônimo";
 
 // Perguntas fixas definidas pelo criador
-const perguntasFixas = [
-"01: Em quais situações se usa porcentagem?",
-      "02: O que é porcentagem?",
-      "03: Quais são os três tipos de porcentagem?",
-      "04: Dê um exemplo de cada um dos três tipos de porcentagem:",
-      "05: Converta as seguintes porcentagens para número decimal: a) 45%",
-      "05: b) 24%",
-      "05: c) 12%",
-      "05: d) 87%",
-      "05: e) 60%",
-      "06: Converta de porcentagem para fração e simplifique quando possível: a) 32%",
-      "06: b) 63%",
-      "06: c) 14%",
-      "06: d) 52%",
-      "06: e) 13%",
-      "07: De decimal para porcentagem: a) 0,2",
-      "07: b) 0,15",
-      "07: c) 0,8",
-      "07: d) 0,64",
-      "07: e) 0,21",
-      "08: De fração para porcentagem: a) 2/3",
-      "08: b) 4/10",
-      "08: c) 6/8",
-      "08: d) 5/10",
-      "08: e) 25/2",
-      "09: Calcule a porcentagem de um valor: a) 8% de 100",
-      "09: b) 7% de 500",
-      "09: c) 42% de 200",
-      "09: d) 2% de 10",
-      "09: e) 15% de 300",
-      "09: f) 81% de 1000",
-      "09: g) 13% de 800",
-      "09: h) 63% de 84",
-      "10: Calcule o novo valor do produto com desconto ou aumento: a) Desconto de 2% em uma caneta de R$8,00",
-      "10: b) Desconto de 15% em uma mala de R$55,00",
-      "10: c) Fatura de R$87,00 terá um aumento de 3% no próximo mês",
-      "10: d) Mensalidade de R$1.560 terá aumento de 7%",
-      "10: e) Desconto de 75% em uma blusa de R$350,00",
-      "10: f) Salário médio de R$1.650,00 terá aumento de 12%",
-      "10: g) Custos com saúde de R$300,00 aumentarão 15%",
-      "10: h) Desconto de 32% em uma bolsa de R$99,00",
-      "11: Qual é a porcentagem de X em relação a Y quando: a) X=15 Y=200",
-      "11: b) X=12 Y=56",
-      "11: c) X=84 Y=500",
-      "11: d) X=13 Y=100",
-      "11: e) X=2 Y=200",
-      "11: f) X=12 Y=76"
+const perguntasFixas = [ 
+      "01: Leia o texto a seguir e responda:\n\nA importância da exploração espacial para o avanço científico e tecnológico da humanidade\n\nA exploração espacial representa um marco fundamental na busca pelo conhecimento humano. Desde o lançamento do Sputnik em 1957 até as missões contemporâneas da NASA e da ESA, o espaço tem sido palco de descobertas que transcendem fronteiras nacionais e ampliem horizontes científicos. Argumenta-se que investir em astronomia e tecnologia espacial não é um luxo, mas uma necessidade estratégica.\n\nPrimeiramente, os avanços tecnológicos decorrentes da corrida espacial impactam diretamente a vida cotidiana. Satélites de comunicação, GPS e previsões meteorológicas são exemplos de benefícios práticos que nasceram da pesquisa espacial. Além disso, a astronomia contribui para a compreensão da origem do universo e da própria vida, fortalecendo o papel da ciência como guia para o futuro.\n\nPor outro lado, críticos apontam os altos custos das missões espaciais, sugerindo que tais recursos poderiam ser destinados a problemas sociais urgentes. Contudo, essa visão ignora o caráter multiplicador dos investimentos em ciência, que geram inovação, empregos e soluções aplicáveis em diversas áreas.\n\nPortanto, a exploração espacial deve ser vista como um investimento no progresso humano. Ao ampliar o conhecimento e fomentar tecnologias, a astronomia reafirma seu papel essencial na construção de um futuro sustentável e inovador.\n\na)Qual o tema do texto?",
+      "01: b)Localize a introdução e identifique o tema central?",
+      "01: c)Aponte qual é a tese defendida pelo autor?",
+      "01: d)Cite dois elementos que sustentam a tese",
+      "01: e) Indique a conclusão e explique como ela retoma a tese.",
+      "02: Baseado no texto acima, crie um redação dissertativo-argumentativa com o mesmo tema acima, com sua própria tese e argumentos. capriche na concluão. Boa sorte!",
 ];
 
 // Carregar respostas salvas
@@ -168,6 +135,14 @@ function mostrarPergunta(texto, respostas) {
   // Caixa de resposta
   const campoResposta = document.createElement("textarea");
   campoResposta.placeholder = "Digite sua resposta...";
+  campoResposta.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+  });
+  campoResposta.addEventListener('focus', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+  });
   divPergunta.appendChild(campoResposta);
 
   // Botão de resposta
@@ -289,5 +264,4 @@ function exportRespostas() {
 }
 </script>
 </body>
-</html><!DOCTYPE html>
-<ht
+</html>

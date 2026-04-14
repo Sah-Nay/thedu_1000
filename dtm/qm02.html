@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QM02</title>
   <style>
-    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui tÃ­tulo em telas pequenas */ }
+    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui título em telas pequenas */ }
   .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
   textarea { height: 25px; /* diminui altura do textarea em telas pequenas */ }
 }
@@ -103,7 +103,7 @@ button:hover {
   </style>
 </head>
 <body>
-  <h1>QM02 - RazÃ£o e ProporÃ§Ã£o</h1>
+  <h1>QM02 - Razão e Proporção</h1>
 
   <!-- Campo de nome global -->
   <input type="text" id="nomeUsuario" placeholder="Digite seu nome...">
@@ -114,34 +114,34 @@ button:hover {
   <button id="exportar">Exportar Respostas</button>
   <button id="limpar">Limpar Respostas</button>
 
-  <!-- Campo para nÃºmero do WhatsApp -->
-  <input type="text" id="numeroWhatsApp" placeholder="Digite seu nÃºmero do WhatsApp (ex: 5511999999999)">
+  <!-- Campo para número do WhatsApp -->
+  <input type="text" id="numeroWhatsApp" placeholder="Digite seu número do WhatsApp (ex: 5511999999999)">
   <button id="enviarWhatsApp">Enviar Respostas para WhatsApp</button>
   
   <script>
-  // VariÃ¡vel global para armazenar o nome
-let nomeGlobal = "AnÃ´nimo";
+  // Variável global para armazenar o nome
+let nomeGlobal = "Anônimo";
 
 // Perguntas fixas definidas pelo criador
 const perguntasFixas = [
-      "01: O que Ã© razÃ£o, e para que serve?",
-      "02: O que Ã© proporÃ§Ã£o?",
-      "03: por que a fraÃ§Ã£o 1/3 Ã© equivalente a fraÃ§Ã£o 5/15",
+      "01: O que é razão, e para que serve?",
+      "02: O que é proporção?",
+      "03: por que a fração 1/3 é equivalente a fração 5/15",
       "04: O que seria uma grandeza proporcional?",
-      "05: Quais sÃ£o os tipos de grandezas?",
+      "05: Quais são os tipos de grandezas?",
       "06: O que seria uma grandeza diretamente proporcional?",
       "07: O que seria uma grandeza inversamente proporcional?",
-      "08: Responda as seguintes fraÃ§Ãµes sabendo-se que: a) Numerador 14, denoomindor 8",
+      "08: Responda as seguintes frações sabendo-se que: a) Numerador 14, denoomindor 8",
       "08: b) denominador 84, numerador 12",
       "08: c) denominador 2, numerador 422",
-      "09: resolva as seguintes questÃµes sabendo-se que podem ser direta ou inversamente proporcional: a) Um carro percorre 120 km em 2 horas. Mantendo a mesma velocidade, quantos quilÃ´metros ele percorrerÃ¡ em 5 horas?",
-      "09: b) Se 6 operÃ¡rios constroem um muro em 12 dias, em quantos dias 4 operÃ¡rios, trabalhando no mesmo ritmo, construirÃ£o o mesmo muro?",
-      "09: c) Uma fÃ¡brica produz 240 peÃ§as em 8 horas de trabalho com 12 mÃ¡quinas funcionando simultaneamente. Se todas as mÃ¡quinas mantiverem o mesmo ritmo, quantas peÃ§as serÃ£o produzidas em 10 horas com 15 mÃ¡quinas?",
-      "09: d) Uma escola planeja uma excursÃ£o e contratou um Ã´nibus para levar 40 alunos. No entanto, houve um aumento no nÃºmero de participantes para 50 alunos. Para que todos possam ir, a empresa decidiu aumentar o nÃºmero de Ã´nibus, mantendo a mesma lotaÃ§Ã£o por veÃ­culo. Quantos Ã´nibus serÃ£o necessÃ¡rios?",
-      "09: e) Um pintor usa 2 litros de tinta para pintar 40 mÂ² de parede. Quantos litros serÃ£o necessÃ¡rios para pintar 100 mÂ²?",
-      "09: f) Uma torneira enche um tanque em 12 horas. Se forem abertas 3 torneiras iguais, em quanto tempo o tanque ficarÃ¡ cheio?",
-      "09: g) Uma grÃ¡fica imprime 500 livros em 10 dias utilizando 5 impressoras. Mantendo o mesmo ritmo de trabalho, em quantos dias 8 impressoras imprimirÃ£o 1.200 livros?",
-      "09: h) Um grupo de estudantes planejou traduzir um livro em 30 dias com 6 tradutores. No entanto, apenas 10 tradutores se disponibilizaram para o trabalho. Mantendo o mesmo ritmo, em quantos dias o livro serÃ¡ traduzido?"
+      "09: resolva as seguintes questões sabendo-se que podem ser direta ou inversamente proporcional: a) Um carro percorre 120 km em 2 horas. Mantendo a mesma velocidade, quantos quilômetros ele percorrerá em 5 horas?",
+      "09: b) Se 6 operários constroem um muro em 12 dias, em quantos dias 4 operários, trabalhando no mesmo ritmo, construirão o mesmo muro?",
+      "09: c) Uma fábrica produz 240 peças em 8 horas de trabalho com 12 máquinas funcionando simultaneamente. Se todas as máquinas mantiverem o mesmo ritmo, quantas peças serão produzidas em 10 horas com 15 máquinas?",
+      "09: d) Uma escola planeja uma excursão e contratou um ônibus para levar 40 alunos. No entanto, houve um aumento no número de participantes para 50 alunos. Para que todos possam ir, a empresa decidiu aumentar o número de ônibus, mantendo a mesma lotação por veículo. Quantos ônibus serão necessários?",
+      "09: e) Um pintor usa 2 litros de tinta para pintar 40 m² de parede. Quantos litros serão necessários para pintar 100 m²?",
+      "09: f) Uma torneira enche um tanque em 12 horas. Se forem abertas 3 torneiras iguais, em quanto tempo o tanque ficará cheio?",
+      "09: g) Uma gráfica imprime 500 livros em 10 dias utilizando 5 impressoras. Mantendo o mesmo ritmo de trabalho, em quantos dias 8 impressoras imprimirão 1.200 livros?",
+      "09: h) Um grupo de estudantes planejou traduzir um livro em 30 dias com 6 tradutores. No entanto, apenas 10 tradutores se disponibilizaram para o trabalho. Mantendo o mesmo ritmo, em quantos dias o livro será traduzido?"
 ];
 
 // Carregar respostas salvas
@@ -161,7 +161,7 @@ function confirmarNome() {
     nomeGlobal = nome;
     alert("Nome confirmado: " + nomeGlobal);
   } else {
-    alert("VocÃª nÃ£o digitou um nome, serÃ¡ usado 'AnÃ´nimo'.");
+    alert("Você não digitou um nome, será usado 'Anônimo'.");
   }
 }
 
@@ -180,11 +180,11 @@ function mostrarPergunta(texto, respostas) {
   campoResposta.placeholder = "Digite sua resposta...";
   divPergunta.appendChild(campoResposta);
 
-  // BotÃ£o de resposta
+  // Botão de resposta
   const botaoResposta = document.createElement("button");
   botaoResposta.textContent = "Responder";
 
-  // Div para respostas (abaixo da caixa e botÃ£o)
+  // Div para respostas (abaixo da caixa e botão)
   const divRespostas = document.createElement("div");
 
   botaoResposta.onclick = function() {
@@ -201,7 +201,7 @@ function mostrarPergunta(texto, respostas) {
   };
   divPergunta.appendChild(botaoResposta);
 
-  // Agora adiciona as respostas abaixo da caixa e botÃ£o
+  // Agora adiciona as respostas abaixo da caixa e botão
   respostas.forEach((r, i) => {
     const resp = criarResposta(r, texto, i);
     divRespostas.appendChild(resp);
@@ -221,7 +221,7 @@ function criarResposta(textoResposta, pergunta, index) {
 
   const del = document.createElement("button");
   del.classList.add("btn-excluir");
-  del.textContent = "âœ–";
+  del.textContent = "✖";
   del.title = "Excluir resposta";
   del.onclick = function() { excluirResposta(pergunta, index, resp); };
   resp.appendChild(del);
@@ -257,7 +257,7 @@ function limparRespostas() {
 function enviarParaWhatsApp() {
   const numero = document.getElementById("numeroWhatsApp").value.trim();
   if (!numero) {
-    alert("Por favor, digite seu nÃºmero do WhatsApp.");
+    alert("Por favor, digite seu número do WhatsApp.");
     return;
   }
 
@@ -277,7 +277,7 @@ function enviarParaWhatsApp() {
   });
 
   if (mensagem === `Respostas de ${nomeGlobal}:\n\n`) {
-    alert("NÃ£o hÃ¡ respostas para enviar.");
+    alert("Não há respostas para enviar.");
     return;
   }
 

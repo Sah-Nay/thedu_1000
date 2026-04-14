@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QR-01</title>
   <style>
-    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui tÃ­tulo em telas pequenas */ }
+    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui t�tulo em telas pequenas */ }
   .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
   textarea { height: 25px; /* diminui altura do textarea em telas pequenas */ }
 }
@@ -119,22 +119,22 @@ button:hover {
   <button id="exportar">Exportar Respostas</button>
   <button id="limpar">Limpar Respostas</button>
 
-  <!-- Campo para nÃºmero do WhatsApp -->
-  <input type="text" id="numeroWhatsApp" placeholder="Digite seu nÃºmero do WhatsApp (ex: 5511999999999)">
+  <!-- Campo para n�mero do WhatsApp -->
+  <input type="text" id="numeroWhatsApp" placeholder="Digite seu n�mero do WhatsApp (ex: 5511999999999)">
   <button id="enviarWhatsApp">Enviar Respostas para WhatsApp</button>
   
   <script>
-  // VariÃ¡vel global para armazenar o nome
-let nomeGlobal = "AnÃ´nimo";
+  // Vari�vel global para armazenar o nome
+let nomeGlobal = "An�nimo";
 
 // Perguntas fixas definidas pelo criador
 const perguntasFixas = [ 
-      "01: Leia o texto a seguir e responda:\n\nO papel da inovaÃ§Ã£o tecnolÃ³gica no desenvolvimento econÃ´mico e social\n\nO desenvolvimento econÃ´mico e social Ã© um objetivo central das naÃ§Ãµes modernas, e a inovaÃ§Ã£o tecnolÃ³gica surge como motor essencial desse processo. Em um mundo cada vez mais globalizado, paÃ­ses que investem em ciÃªncia e tecnologia conseguem ampliar sua competitividade e oferecer melhores condiÃ§Ãµes de vida Ã  populaÃ§Ã£o.\n\nPrimeiramente, a tecnologia promove eficiÃªncia e produtividade. Setores como agricultura, saÃºde e educaÃ§Ã£o sÃ£o profundamente beneficiados por inovaÃ§Ãµes que reduzem custos e ampliam o acesso. Por exemplo, a telemedicina permite atendimento em regiÃµes remotas, enquanto plataformas digitais democratizam o conhecimento.\n\nAlÃ©m disso, a inovaÃ§Ã£o tecnolÃ³gica impulsiona a criaÃ§Ã£o de empregos qualificados e fomenta o empreendedorismo. Startups e empresas de base tecnolÃ³gica tornam-se protagonistas na geraÃ§Ã£o de riqueza e na transformaÃ§Ã£o social. Contudo, Ã© preciso destacar que o desenvolvimento tecnolÃ³gico deve ser acompanhado de polÃ­ticas inclusivas, para evitar a ampliaÃ§Ã£o das desigualdades sociais.\n\nPortanto, a inovaÃ§Ã£o tecnolÃ³gica Ã© um pilar do desenvolvimento sustentÃ¡vel. Ao promover avanÃ§os econÃ´micos e sociais, ela reafirma a importÃ¢ncia de investir em ciÃªncia e educaÃ§Ã£o como caminhos para a construÃ§Ã£o de uma sociedade mais justa e prÃ³spera.\n\na)Qual o tema do texto?",
-      "01: b)Localize a introduÃ§Ã£o e identifique o tema central?",
-      "01: c)Aponte qual Ã© a tese defendida pelo autor?",
+      "01: Leia o texto a seguir e responda:\n\nO papel da inova��o tecnol�gica no desenvolvimento econ�mico e social\n\nO desenvolvimento econ�mico e social � um objetivo central das na��es modernas, e a inova��o tecnol�gica surge como motor essencial desse processo. Em um mundo cada vez mais globalizado, pa�ses que investem em ci�ncia e tecnologia conseguem ampliar sua competitividade e oferecer melhores condi��es de vida � popula��o.\n\nPrimeiramente, a tecnologia promove efici�ncia e produtividade. Setores como agricultura, sa�de e educa��o s�o profundamente beneficiados por inova��es que reduzem custos e ampliam o acesso. Por exemplo, a telemedicina permite atendimento em regi�es remotas, enquanto plataformas digitais democratizam o conhecimento.\n\nAl�m disso, a inova��o tecnol�gica impulsiona a cria��o de empregos qualificados e fomenta o empreendedorismo. Startups e empresas de base tecnol�gica tornam-se protagonistas na gera��o de riqueza e na transforma��o social. Contudo, � preciso destacar que o desenvolvimento tecnol�gico deve ser acompanhado de pol�ticas inclusivas, para evitar a amplia��o das desigualdades sociais.\n\nPortanto, a inova��o tecnol�gica � um pilar do desenvolvimento sustent�vel. Ao promover avan�os econ�micos e sociais, ela reafirma a import�ncia de investir em ci�ncia e educa��o como caminhos para a constru��o de uma sociedade mais justa e pr�spera.\n\na)Qual o tema do texto?",
+      "01: b)Localize a introdu��o e identifique o tema central?",
+      "01: c)Aponte qual � a tese defendida pelo autor?",
       "01: d)Cite dois elementos que sustentam a tese",
-      "01: e) Indique a conclusÃ£o e explique como ela retoma a tese.",
-      "02: Baseado no texto acima, crie um redaÃ§Ã£o dissertativo-argumentativa com o mesmo tema acima, com sua prÃ³pria tese e argumentos. capriche na concluÃ£o. Boa sorte!",
+      "01: e) Indique a conclus�o e explique como ela retoma a tese.",
+      "02: Baseado no texto acima, crie um reda��o dissertativo-argumentativa com o mesmo tema acima, com sua pr�pria tese e argumentos. capriche na conclu�o. Boa sorte!",
 ];
 
 // Carregar respostas salvas
@@ -154,7 +154,7 @@ function confirmarNome() {
     nomeGlobal = nome;
     alert("Nome confirmado: " + nomeGlobal);
   } else {
-    alert("VocÃª nÃ£o digitou um nome, serÃ¡ usado 'AnÃ´nimo'.");
+    alert("Voc� n�o digitou um nome, ser� usado 'An�nimo'.");
   }
 }
 
@@ -181,11 +181,11 @@ function mostrarPergunta(texto, respostas) {
   });
   divPergunta.appendChild(campoResposta);
 
-  // BotÃ£o de resposta
+  // Bot�o de resposta
   const botaoResposta = document.createElement("button");
   botaoResposta.textContent = "Responder";
 
-  // Div para respostas (abaixo da caixa e botÃ£o)
+  // Div para respostas (abaixo da caixa e bot�o)
   const divRespostas = document.createElement("div");
 
   botaoResposta.onclick = function() {
@@ -202,7 +202,7 @@ function mostrarPergunta(texto, respostas) {
   };
   divPergunta.appendChild(botaoResposta);
 
-  // Agora adiciona as respostas abaixo da caixa e botÃ£o
+  // Agora adiciona as respostas abaixo da caixa e bot�o
   respostas.forEach((r, i) => {
     const resp = criarResposta(r, texto, i);
     divRespostas.appendChild(resp);
@@ -222,7 +222,7 @@ function criarResposta(textoResposta, pergunta, index) {
 
   const del = document.createElement("button");
   del.classList.add("btn-excluir");
-  del.textContent = "âœ–";
+  del.textContent = "?";
   del.title = "Excluir resposta";
   del.onclick = function() { excluirResposta(pergunta, index, resp); };
   resp.appendChild(del);
@@ -258,7 +258,7 @@ function limparRespostas() {
 function enviarParaWhatsApp() {
   const numero = document.getElementById("numeroWhatsApp").value.trim();
   if (!numero) {
-    alert("Por favor, digite seu nÃºmero do WhatsApp.");
+    alert("Por favor, digite seu n�mero do WhatsApp.");
     return;
   }
 
@@ -278,7 +278,7 @@ function enviarParaWhatsApp() {
   });
 
   if (mensagem === `Respostas de ${nomeGlobal}:\n\n`) {
-    alert("NÃ£o hÃ¡ respostas para enviar.");
+    alert("N�o h� respostas para enviar.");
     return;
   }
 

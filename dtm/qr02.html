@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QR-01</title>
   <style>
-    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui tÃ­tulo em telas pequenas */ }
+    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui título em telas pequenas */ }
   .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
   textarea { height: 25px; /* diminui altura do textarea em telas pequenas */ }
 }
@@ -119,22 +119,22 @@ button:hover {
   <button id="exportar">Exportar Respostas</button>
   <button id="limpar">Limpar Respostas</button>
 
-  <!-- Campo para nÃºmero do WhatsApp -->
-  <input type="text" id="numeroWhatsApp" placeholder="Digite seu nÃºmero do WhatsApp (ex: 5511999999999)">
+  <!-- Campo para número do WhatsApp -->
+  <input type="text" id="numeroWhatsApp" placeholder="Digite seu número do WhatsApp (ex: 5511999999999)">
   <button id="enviarWhatsApp">Enviar Respostas para WhatsApp</button>
   
   <script>
-  // VariÃ¡vel global para armazenar o nome
-let nomeGlobal = "AnÃ´nimo";
+  // Variável global para armazenar o nome
+let nomeGlobal = "Anônimo";
 
 // Perguntas fixas definidas pelo criador
 const perguntasFixas = [ 
-      "01: Leia o texto a seguir e responda:\n\nO desafio da preservaÃ§Ã£o ambiental frente ao crescimento urbano\n\nO crescimento urbano acelerado, caracterÃ­stico das Ãºltimas dÃ©cadas, trouxe consigo sÃ©rios desafios ambientais. A expansÃ£o das cidades, muitas vezes desordenada, resulta em poluiÃ§Ã£o, desmatamento e perda da biodiversidade. Nesse contexto, a preservaÃ§Ã£o ambiental torna-se um imperativo Ã©tico e prÃ¡tico para garantir qualidade de vida Ã s geraÃ§Ãµes presentes e futuras.\n\nEm primeiro lugar, Ã© necessÃ¡rio reconhecer que o meio ambiente fornece recursos indispensÃ¡veis Ã  sobrevivÃªncia humana, como Ã¡gua potÃ¡vel, ar limpo e alimentos. A degradaÃ§Ã£o desses elementos compromete diretamente a saÃºde pÃºblica e a economia. AlÃ©m disso, a destruiÃ§Ã£o de ecossistemas fragiliza o equilÃ­brio climÃ¡tico, intensificando fenÃ´menos como enchentes e secas.\n\nEntretanto, o desenvolvimento urbano nÃ£o precisa ser incompatÃ­vel com a preservaÃ§Ã£o ambiental. PolÃ­ticas pÃºblicas voltadas para o planejamento sustentÃ¡vel, como transporte coletivo eficiente, saneamento bÃ¡sico e Ã¡reas verdes, podem conciliar progresso e equilÃ­brio ecolÃ³gico. A educaÃ§Ã£o ambiental tambÃ©m desempenha papel crucial, ao formar cidadÃ£os conscientes e engajados na defesa da natureza.\n\nAssim, a preservaÃ§Ã£o ambiental diante do crescimento urbano exige responsabilidade coletiva e polÃ­ticas eficazes. Somente por meio da integraÃ§Ã£o entre sociedade e governo serÃ¡ possÃ­vel construir cidades sustentÃ¡veis e garantir um futuro saudÃ¡vel para todos.\n\na)Qual o tema do texto?",
-      "01: b)Localize a introduÃ§Ã£o e identifique o tema central?",
-      "01: c)Aponte qual Ã© a tese defendida pelo autor?",
+      "01: Leia o texto a seguir e responda:\n\nO desafio da preservação ambiental frente ao crescimento urbano\n\nO crescimento urbano acelerado, característico das últimas décadas, trouxe consigo sérios desafios ambientais. A expansão das cidades, muitas vezes desordenada, resulta em poluição, desmatamento e perda da biodiversidade. Nesse contexto, a preservação ambiental torna-se um imperativo ético e prático para garantir qualidade de vida às gerações presentes e futuras.\n\nEm primeiro lugar, é necessário reconhecer que o meio ambiente fornece recursos indispensáveis à sobrevivência humana, como água potável, ar limpo e alimentos. A degradação desses elementos compromete diretamente a saúde pública e a economia. Além disso, a destruição de ecossistemas fragiliza o equilíbrio climático, intensificando fenômenos como enchentes e secas.\n\nEntretanto, o desenvolvimento urbano não precisa ser incompatível com a preservação ambiental. Políticas públicas voltadas para o planejamento sustentável, como transporte coletivo eficiente, saneamento básico e áreas verdes, podem conciliar progresso e equilíbrio ecológico. A educação ambiental também desempenha papel crucial, ao formar cidadãos conscientes e engajados na defesa da natureza.\n\nAssim, a preservação ambiental diante do crescimento urbano exige responsabilidade coletiva e políticas eficazes. Somente por meio da integração entre sociedade e governo será possível construir cidades sustentáveis e garantir um futuro saudável para todos.\n\na)Qual o tema do texto?",
+      "01: b)Localize a introdução e identifique o tema central?",
+      "01: c)Aponte qual é a tese defendida pelo autor?",
       "01: d)Cite dois elementos que sustentam a tese",
-      "01: e) Indique a conclusÃ£o e explique como ela retoma a tese.",
-      "02: Baseado no texto acima, crie um redaÃ§Ã£o dissertativo-argumentativa com o mesmo tema acima, com sua prÃ³pria tese e argumentos. capriche na concluÃ£o. Boa sorte!",
+      "01: e) Indique a conclusão e explique como ela retoma a tese.",
+      "02: Baseado no texto acima, crie um redação dissertativo-argumentativa com o mesmo tema acima, com sua própria tese e argumentos. capriche na concluão. Boa sorte!",
 ];
 
 // Carregar respostas salvas
@@ -154,7 +154,7 @@ function confirmarNome() {
     nomeGlobal = nome;
     alert("Nome confirmado: " + nomeGlobal);
   } else {
-    alert("VocÃª nÃ£o digitou um nome, serÃ¡ usado 'AnÃ´nimo'.");
+    alert("Você não digitou um nome, será usado 'Anônimo'.");
   }
 }
 
@@ -181,11 +181,11 @@ function mostrarPergunta(texto, respostas) {
   });
   divPergunta.appendChild(campoResposta);
 
-  // BotÃ£o de resposta
+  // Botão de resposta
   const botaoResposta = document.createElement("button");
   botaoResposta.textContent = "Responder";
 
-  // Div para respostas (abaixo da caixa e botÃ£o)
+  // Div para respostas (abaixo da caixa e botão)
   const divRespostas = document.createElement("div");
 
   botaoResposta.onclick = function() {
@@ -202,7 +202,7 @@ function mostrarPergunta(texto, respostas) {
   };
   divPergunta.appendChild(botaoResposta);
 
-  // Agora adiciona as respostas abaixo da caixa e botÃ£o
+  // Agora adiciona as respostas abaixo da caixa e botão
   respostas.forEach((r, i) => {
     const resp = criarResposta(r, texto, i);
     divRespostas.appendChild(resp);
@@ -222,7 +222,7 @@ function criarResposta(textoResposta, pergunta, index) {
 
   const del = document.createElement("button");
   del.classList.add("btn-excluir");
-  del.textContent = "âœ–";
+  del.textContent = "✖";
   del.title = "Excluir resposta";
   del.onclick = function() { excluirResposta(pergunta, index, resp); };
   resp.appendChild(del);
@@ -258,7 +258,7 @@ function limparRespostas() {
 function enviarParaWhatsApp() {
   const numero = document.getElementById("numeroWhatsApp").value.trim();
   if (!numero) {
-    alert("Por favor, digite seu nÃºmero do WhatsApp.");
+    alert("Por favor, digite seu número do WhatsApp.");
     return;
   }
 
@@ -278,7 +278,7 @@ function enviarParaWhatsApp() {
   });
 
   if (mensagem === `Respostas de ${nomeGlobal}:\n\n`) {
-    alert("NÃ£o hÃ¡ respostas para enviar.");
+    alert("Não há respostas para enviar.");
     return;
   }
 

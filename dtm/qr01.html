@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QR-01</title>
   <style>
-    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui tÃ­tulo em telas pequenas */ }
+    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui t�tulo em telas pequenas */ }
   .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
   textarea { height: 25px; /* diminui altura do textarea em telas pequenas */ }
 }
@@ -119,22 +119,22 @@ button:hover {
   <button id="exportar">Exportar Respostas</button>
   <button id="limpar">Limpar Respostas</button>
 
-  <!-- Campo para nÃºmero do WhatsApp -->
-  <input type="text" id="numeroWhatsApp" placeholder="Digite seu nÃºmero do WhatsApp (ex: 5511999999999)">
+  <!-- Campo para n�mero do WhatsApp -->
+  <input type="text" id="numeroWhatsApp" placeholder="Digite seu n�mero do WhatsApp (ex: 5511999999999)">
   <button id="enviarWhatsApp">Enviar Respostas para WhatsApp</button>
   
   <script>
-  // VariÃ¡vel global para armazenar o nome
-let nomeGlobal = "AnÃ´nimo";
+  // Vari�vel global para armazenar o nome
+let nomeGlobal = "An�nimo";
 
 // Perguntas fixas definidas pelo criador
 const perguntasFixas = [ 
-      "01: Leia o texto a seguir e responda:\n\nA importÃ¢ncia da exploraÃ§Ã£o espacial para o avanÃ§o cientÃ­fico e tecnolÃ³gico da humanidade\n\nA exploraÃ§Ã£o espacial representa um marco fundamental na busca pelo conhecimento humano. Desde o lanÃ§amento do Sputnik em 1957 atÃ© as missÃµes contemporÃ¢neas da NASA e da ESA, o espaÃ§o tem sido palco de descobertas que transcendem fronteiras nacionais e ampliem horizontes cientÃ­ficos. Argumenta-se que investir em astronomia e tecnologia espacial nÃ£o Ã© um luxo, mas uma necessidade estratÃ©gica.\n\nPrimeiramente, os avanÃ§os tecnolÃ³gicos decorrentes da corrida espacial impactam diretamente a vida cotidiana. SatÃ©lites de comunicaÃ§Ã£o, GPS e previsÃµes meteorolÃ³gicas sÃ£o exemplos de benefÃ­cios prÃ¡ticos que nasceram da pesquisa espacial. AlÃ©m disso, a astronomia contribui para a compreensÃ£o da origem do universo e da prÃ³pria vida, fortalecendo o papel da ciÃªncia como guia para o futuro.\n\nPor outro lado, crÃ­ticos apontam os altos custos das missÃµes espaciais, sugerindo que tais recursos poderiam ser destinados a problemas sociais urgentes. Contudo, essa visÃ£o ignora o carÃ¡ter multiplicador dos investimentos em ciÃªncia, que geram inovaÃ§Ã£o, empregos e soluÃ§Ãµes aplicÃ¡veis em diversas Ã¡reas.\n\nPortanto, a exploraÃ§Ã£o espacial deve ser vista como um investimento no progresso humano. Ao ampliar o conhecimento e fomentar tecnologias, a astronomia reafirma seu papel essencial na construÃ§Ã£o de um futuro sustentÃ¡vel e inovador.\n\na)Qual o tema do texto?",
-      "01: b)Localize a introduÃ§Ã£o e identifique o tema central?",
-      "01: c)Aponte qual Ã© a tese defendida pelo autor?",
+      "01: Leia o texto a seguir e responda:\n\nA import�ncia da explora��o espacial para o avan�o cient�fico e tecnol�gico da humanidade\n\nA explora��o espacial representa um marco fundamental na busca pelo conhecimento humano. Desde o lan�amento do Sputnik em 1957 at� as miss�es contempor�neas da NASA e da ESA, o espa�o tem sido palco de descobertas que transcendem fronteiras nacionais e ampliem horizontes cient�ficos. Argumenta-se que investir em astronomia e tecnologia espacial n�o � um luxo, mas uma necessidade estrat�gica.\n\nPrimeiramente, os avan�os tecnol�gicos decorrentes da corrida espacial impactam diretamente a vida cotidiana. Sat�lites de comunica��o, GPS e previs�es meteorol�gicas s�o exemplos de benef�cios pr�ticos que nasceram da pesquisa espacial. Al�m disso, a astronomia contribui para a compreens�o da origem do universo e da pr�pria vida, fortalecendo o papel da ci�ncia como guia para o futuro.\n\nPor outro lado, cr�ticos apontam os altos custos das miss�es espaciais, sugerindo que tais recursos poderiam ser destinados a problemas sociais urgentes. Contudo, essa vis�o ignora o car�ter multiplicador dos investimentos em ci�ncia, que geram inova��o, empregos e solu��es aplic�veis em diversas �reas.\n\nPortanto, a explora��o espacial deve ser vista como um investimento no progresso humano. Ao ampliar o conhecimento e fomentar tecnologias, a astronomia reafirma seu papel essencial na constru��o de um futuro sustent�vel e inovador.\n\na)Qual o tema do texto?",
+      "01: b)Localize a introdu��o e identifique o tema central?",
+      "01: c)Aponte qual � a tese defendida pelo autor?",
       "01: d)Cite dois elementos que sustentam a tese",
-      "01: e) Indique a conclusÃ£o e explique como ela retoma a tese.",
-      "02: Baseado no texto acima, crie um redaÃ§Ã£o dissertativo-argumentativa com o mesmo tema acima, com sua prÃ³pria tese e argumentos. capriche na concluÃ£o. Boa sorte!",
+      "01: e) Indique a conclus�o e explique como ela retoma a tese.",
+      "02: Baseado no texto acima, crie um reda��o dissertativo-argumentativa com o mesmo tema acima, com sua pr�pria tese e argumentos. capriche na conclu�o. Boa sorte!",
 ];
 
 // Carregar respostas salvas
@@ -154,7 +154,7 @@ function confirmarNome() {
     nomeGlobal = nome;
     alert("Nome confirmado: " + nomeGlobal);
   } else {
-    alert("VocÃª nÃ£o digitou um nome, serÃ¡ usado 'AnÃ´nimo'.");
+    alert("Voc� n�o digitou um nome, ser� usado 'An�nimo'.");
   }
 }
 
@@ -181,11 +181,11 @@ function mostrarPergunta(texto, respostas) {
   });
   divPergunta.appendChild(campoResposta);
 
-  // BotÃ£o de resposta
+  // Bot�o de resposta
   const botaoResposta = document.createElement("button");
   botaoResposta.textContent = "Responder";
 
-  // Div para respostas (abaixo da caixa e botÃ£o)
+  // Div para respostas (abaixo da caixa e bot�o)
   const divRespostas = document.createElement("div");
 
   botaoResposta.onclick = function() {
@@ -202,7 +202,7 @@ function mostrarPergunta(texto, respostas) {
   };
   divPergunta.appendChild(botaoResposta);
 
-  // Agora adiciona as respostas abaixo da caixa e botÃ£o
+  // Agora adiciona as respostas abaixo da caixa e bot�o
   respostas.forEach((r, i) => {
     const resp = criarResposta(r, texto, i);
     divRespostas.appendChild(resp);
@@ -222,7 +222,7 @@ function criarResposta(textoResposta, pergunta, index) {
 
   const del = document.createElement("button");
   del.classList.add("btn-excluir");
-  del.textContent = "âœ–";
+  del.textContent = "?";
   del.title = "Excluir resposta";
   del.onclick = function() { excluirResposta(pergunta, index, resp); };
   resp.appendChild(del);
@@ -258,7 +258,7 @@ function limparRespostas() {
 function enviarParaWhatsApp() {
   const numero = document.getElementById("numeroWhatsApp").value.trim();
   if (!numero) {
-    alert("Por favor, digite seu nÃºmero do WhatsApp.");
+    alert("Por favor, digite seu n�mero do WhatsApp.");
     return;
   }
 
@@ -278,7 +278,7 @@ function enviarParaWhatsApp() {
   });
 
   if (mensagem === `Respostas de ${nomeGlobal}:\n\n`) {
-    alert("NÃ£o hÃ¡ respostas para enviar.");
+    alert("N�o h� respostas para enviar.");
     return;
   }
 

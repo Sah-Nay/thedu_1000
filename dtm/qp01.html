@@ -1,8 +1,8 @@
-﻿<head>
+<head>
   <meta lang="pt-BR">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR-01</title>
+  <title>QP-01</title>
   <style>
     @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui t�tulo em telas pequenas */ }
   .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
@@ -108,7 +108,7 @@ button:hover {
   </style>
 </head>
 <body>
-  <h1>QR01- Testando conhecimento 01</h1>
+  <h1>QP01- Interpretação de Textos</h1>
 
   <!-- Campo de nome global -->
   <input type="text" id="nomeUsuario" placeholder="Digite seu nome...">
@@ -122,20 +122,31 @@ button:hover {
   <!-- Campo para número do WhatsApp -->
   <input type="text" id="numeroWhatsApp" placeholder="Digite seu número do WhatsApp (ex: 5511999999999)">
   <button id="enviarWhatsApp">Enviar Respostas para WhatsApp</button>
-  
+
+  <li>Utilize a imagem a seguir para responder a questão 09:</li>
+  <img src="../../imagens/sorvete.png" alt="Conscientização" height="300px" width="300px">
+
   <script>
   // Variável global para armazenar o nome
 let nomeGlobal = "Anônimo";
 
 // Perguntas fixas definidas pelo criador
 const perguntasFixas = [ 
-      "01: Leia o texto a seguir e responda:\n\nA importância da explorao espacial para o avano cientfico e tecnolgico da humanidade\n\nA explorao espacial representa um marco fundamental na busca pelo conhecimento humano. Desde o lanamento do Sputnik em 1957 at as misses contemporneas da NASA e da ESA, o espao tem sido palco de descobertas que transcendem fronteiras nacionais e ampliem horizontes cientficos. Argumenta-se que investir em astronomia e tecnologia espacial no um luxo, mas uma necessidade estratgica.\n\nPrimeiramente, os avanos tecnolgicos decorrentes da corrida espacial impactam diretamente a vida cotidiana. Satlites de comunicao, GPS e previses meteorolgicas so exemplos de benefcios prticos que nasceram da pesquisa espacial. Alm disso, a astronomia contribui para a compreenso da origem do universo e da prpria vida, fortalecendo o papel da cincia como guia para o futuro.\n\nPor outro lado, crticos apontam os altos custos das misses espaciais, sugerindo que tais recursos poderiam ser destinados a problemas sociais urgentes. Contudo, essa viso ignora o carter multiplicador dos investimentos em cincia, que geram inovao, empregos e solues aplicveis em diversasreas.\n\nPortanto, a explorao espacial deve ser vista como um investimento no progresso humano. Ao ampliar o conhecimento e fomentar tecnologias, a astronomia reafirma seu papel essencial na construo de um futuro sustentvel e inovador.\n\na)Qual o tema do texto?",
-      "01: b)Localize a introduo e identifique o tema central?",
-      "01: c)Aponte qual a tese defendida pelo autor?",
-      "01: d)Cite dois elementos que sustentam a tese",
-      "01: e) Indique a conclusão e explique como ela retoma a tese.",
-      "02: Baseado no texto acima, crie uma redação dissertativo-argumentativa com o mesmo tema acima, com sua prpria tese e argumentos. capriche na concluo. Boa sorte!",
-];
+     "01- explique com suas palavras o que são generos textuais e de ao menos 3 exemplos.",
+     "02- O que é uma linguagem conotativa? e denotativa?",
+     "03- diferencie fabula, conto e crônica",
+     "04- diferencie noticia e reportagem",
+     "05- Leia o texto a seguir e responda: Artigo:\n\n Gripe\n\nA gripe é uma doença respiratória causada pelo vírus influênza, transmitido principalmente por gotículas expelidas ao falar, tossir ou espirrar. Diferente do que muitos acreditam, alimentos frios como sorvete não provocam gripe. O que determina se uma pessoa ficará doente é o contato com o vírus e o estado de seu sistema imunológico.\n\nO sistema imunológico pode ser enfraquecido por diversos fatores, entre eles:\n\nMá alimentação, com excesso de ultraprocessados e falta de frutas, verduras e proteínas.\n\nPrivação de sono, que reduz a capacidade de defesa do organismo.\n\nEstresse crônico, que libera hormônios capazes de prejudicar a resposta imunológica.\n\nSedentarismo ou falta de atividade física regular.\n\nDoenças crônicas como diabetes ou hipertensão, que podem comprometer a imunidade.\n\nPara prevenir a gripe, é essencial manter hábitos saudáveis, praticar exercícios, dormir bem e adotar uma alimentação equilibrada. Além disso, a vacina contra a gripe é a forma mais eficaz de proteção, pois prepara o organismo para reconhecer e combater o vírus.\n\nResponda: A)Qual o gênero textual?",
+     "06, B)Qual  objetivo do texto?",
+     "08, D)Qual a mensagem/ensinamento?",
+     "09- Leia o texto a seguir e responda: \n\nDia de chuva\n\nEra uma vez uma criança chamada Lucas, que adorava brincar na chuva sem agasalho. Certo dia, depois de correr muito sob o frio, sua garganta ficou inflamada e ele passou a ter dor ao engolir.\n\nPara ajudar a dor, sua mãe lhe trouxe sorvete após um xarope hirrível!\n\nLucas aprendeu a lição, de que brincar na chuva pode ser muito doloroso. \n\nMoral da história: Nem tudo que é divertido é saudável. Às vezes, é preciso pensar nas consequências antes de agir. \n\nResponda: A)Qual o gênero textual?",
+     "07, B)Qual  objetivo do texto?",
+     "08, D)Qual a mensagem/ensinamento?",
+     "09- Veja a imagem no fim da página e responda o que se pede: \n\n A)Qual o gênero textual?",
+     "10, B) Qual a mensagem/ensinamento da imagem?",
+     "11, C) Qual o objetivo da imagem?",
+     "12, D) A informação é verdadeira ou trata-se de uma fack news? Justifique sua resposta."
+  ];
 
 // Carregar respostas salvas
 window.onload = function() {
@@ -299,6 +310,7 @@ function exportRespostas() {
   URL.revokeObjectURL(url);
 }
 </script>
+
 </body>
 </html>
 

@@ -1,126 +1,75 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QM02</title>
-  <style>
-    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui título em telas pequenas */ }
-  .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
-  textarea { height: 25px; /* diminui altura do textarea em telas pequenas */ }
+<meta charset="UTF-8">
+<title>QM02</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #974c216e;
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 20px;
 }
 
-body {
-            background-color: #33130044;
-            font-family: Arial, sans-serif;
-            margin: 0 auto;
-            max-width: 1080px;
-            min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        a {
-            color: #1e724d;
-            word-break: break-word;
-        }
-
-        ul {
-            padding-left: 1.2rem;
-        }
-
-        @media (max-width: 900px) {
-            body {
-                padding: 16px;
-            }
-        }
-
-        @media (max-width: 620px) {
-            body {
-                padding: 12px;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-            ul {
-                padding-left: 1rem;
-            }
-        }
+h1 {
+    text-align: center;
+}
 
 .pergunta {
-  margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .resposta {
-  background-color: #5767641b;
-  margin-left: 20px;
-  border-left: 2px solid hsl(114, 79%, 21%);
-  padding-left: 10px;
-  margin-top: 5px;  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-textarea {
-  background-color: #2877661b;
-  width: 100%;
-  height: 30px;
-  margin-top: 10px;
+    background-color: rgb(165, 145, 132);
+    font-family: Arial, sans-serif;
+    width: 100%;
+    min-height: 40px;
+    padding: 5px;
+    resize: none;
 }
 
 button {
-  margin-top: 5px;
-  padding: 6px 12px;
-  background: #33130044;
-  color: rgb(0, 0, 0);
-  border: none;
-  cursor: pointer;
+    background-color: #3816036e;
+    margin-top: 10px;
+    padding: 8px 14px;
+    cursor: pointer;
 }
 
-button:hover {
-  background: #33130083;
+:active button {
+    background-color: #30250388;
 }
 
-.btn-excluir {
-  margin-left: 10px;
-  background: #33130044;
+#resultadoFinal {
+    margin-top: 30px;
+    padding: 15px;
+    border-top: 2px solid black;
 }
 
-.dataHora {
-  font-size: 0.9em;
-  color: #1b000044;
-  margin-left: 10px;
+.correto {
+    color: green;
 }
 
-#nomeUsuario {
-  background-color: #2877661b;
-  font-weight: bold;
-  color: #000000;
+.errado {
+    color: red;
 }
-  </style>
+</style>
 </head>
+
 <body>
-  <h1>QM02 - Razão e Proporção</h1>
 
-  <!-- Campo de nome global -->
-  <input type="text" id="nomeUsuario" placeholder="Digite seu nome...">
-  <button id="confirmarNome">Confirmar Nome</button>
+<h1>QM02- Razão e Proporção</h1>
 
-  <div id="lista-perguntas"></div>
+<div id="questionario"></div>
 
-  <button id="exportar">Exportar Respostas</button>
-  <button id="limpar">Limpar Respostas</button>
+<button onclick="mostrarRespostas()">Corrigir</button>
 
-  <!-- Campo para número do WhatsApp -->
-  <input type="text" id="numeroWhatsApp" placeholder="Digite seu número do WhatsApp (ex: 5511999999999)">
-  <button id="enviarWhatsApp">Enviar Respostas para WhatsApp</button>
-  
-  <script>
-  // Variável global para armazenar o nome
-let nomeGlobal = "Anônimo";
+<div id="resultadoFinal"></div>
+
+<script>
+
+let nomeGlobal = "Thedu";
 
 // Perguntas fixas definidas pelo criador
 const perguntasFixas = [
@@ -144,160 +93,99 @@ const perguntasFixas = [
       "09: h) Um grupo de estudantes planejou traduzir um livro em 30 dias com 6 tradutores. No entanto, apenas 10 tradutores se disponibilizaram para o trabalho. Mantendo o mesmo ritmo, em quantos dias o livro será traduzido?"
 ];
 
-// Carregar respostas salvas
-window.onload = function() {
-  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
-  perguntasFixas.forEach(p => mostrarPergunta(p, dados[p] || []));
+// RESPOSTAS CORRETAS
+const respostasFixas = [
+"Razão é o resultado da fração e serve para encontrar a relção entre duas grandezas",
+"Proporção é o que a razão de duas grandezas tem de semelhante.",
+"Pois 1/15*(1/3)=1/5*(5/15)",
+"Seria uma grandeza cuja a mudança de um altera também a outra",
+"Direta e inversamente proporcional",
+"Seria a grandeza que se aumenta ou diminui na mesma proporcao",
+"Seria a grandeza que se aumenta ou diminui inversamente",
+"7/4",
+"7",
+"1/211",
+"300 km",
+"18 dias",  
+"375 peças",
+"2 ônibus",
+"5 litros",
+"4 horas",
+"15 dias",
+"18 dias"
+];
 
-  document.getElementById("exportar").addEventListener("click", exportRespostas);
-  document.getElementById("limpar").addEventListener("click", limparRespostas);
-  document.getElementById("confirmarNome").addEventListener("click", confirmarNome);
-  document.getElementById("enviarWhatsApp").addEventListener("click", enviarParaWhatsApp);
+// CRIAR PERGUNTAS
+window.onload = function() {
+    const container = document.getElementById("questionario");
+
+    perguntasFixas.forEach((pergunta, index) => {
+        const div = document.createElement("div");
+        div.classList.add("pergunta");
+
+        const respostaSalva = localStorage.getItem(`resp${index}`) || "";
+
+        div.innerHTML = `
+            <label>${pergunta}</label>
+            <textarea id="resp${index}" class="resposta">${respostaSalva}</textarea>
+        `;
+
+        container.appendChild(div);
+
+        const textarea = document.getElementById(`resp${index}`);
+
+        setTimeout(() => {
+            textarea.style.height = textarea.scrollHeight + "px";
+        }, 0);
+
+        textarea.addEventListener("input", function() {
+            this.style.height = "auto";
+            this.style.height = this.scrollHeight + "px";
+            localStorage.setItem(`resp${index}`, this.value);
+        });
+    });
 };
 
-function confirmarNome() {
-  const nome = document.getElementById("nomeUsuario").value.trim();
-  if (nome !== "") {
-    nomeGlobal = nome;
-    alert("Nome confirmado: " + nomeGlobal);
-  } else {
-    alert("Você não digitou um nome, será usado 'Anônimo'.");
-  }
+// MOSTRAR RESULTADO
+function mostrarRespostas() {
+    const resultadoDiv = document.getElementById("resultadoFinal");
+
+    resultadoDiv.innerHTML = `<h2>Resultado de ${nomeGlobal}</h2>`;
+
+    let acertos = 0;
+
+    perguntasFixas.forEach((pergunta, index) => {
+        const input = document.getElementById(`resp${index}`);
+        const respostaUsuario = input ? input.value.trim() : "";
+
+        const respostaCorreta = respostasFixas[index] || "";
+
+        const acertou = respostaUsuario.toLowerCase() === respostaCorreta.toLowerCase();
+
+        if (acertou) acertos++;
+
+        const div = document.createElement("div");
+
+        div.innerHTML = `
+            <strong>${pergunta}</strong><br>
+            🧑 Sua resposta: ${respostaUsuario || "(vazia)"}<br>
+            ✅ Correta: ${respostaCorreta}<br>
+            <span class="${acertou ? 'correto' : 'errado'}">
+                ${acertou ? "✔ Acertou" : "✘ Errou"}
+            </span>
+            <hr>
+        `;
+
+        resultadoDiv.appendChild(div);
+    });
+
+    const nota = document.createElement("h3");
+    nota.innerText = `Pontuação: ${acertos} / ${perguntasFixas.length}`;
+
+    resultadoDiv.appendChild(nota);
 }
 
-function mostrarPergunta(texto, respostas) {
-  const lista = document.getElementById("lista-perguntas");
-
-  const divPergunta = document.createElement("div");
-  divPergunta.classList.add("pergunta");
-
-  const titulo = document.createElement("h3");
-  titulo.textContent = texto;
-  divPergunta.appendChild(titulo);
-
-  // Caixa de resposta
-  const campoResposta = document.createElement("textarea");
-  campoResposta.placeholder = "Digite sua resposta...";
-  divPergunta.appendChild(campoResposta);
-
-  // Botão de resposta
-  const botaoResposta = document.createElement("button");
-  botaoResposta.textContent = "Responder";
-
-  // Div para respostas (abaixo da caixa e botão)
-  const divRespostas = document.createElement("div");
-
-  botaoResposta.onclick = function() {
-    const textoResposta = campoResposta.value.trim();
-    if (textoResposta !== "") {
-      const dataHora = new Date().toLocaleString("pt-BR");
-      const respostaFormatada = `<strong>${nomeGlobal}</strong> respondeu: ${textoResposta} <span class="dataHora">(${dataHora})</span>`;
-      const idx = salvarResposta(texto, respostaFormatada);
-
-      const resp = criarResposta(respostaFormatada, texto, idx);
-      divRespostas.appendChild(resp);
-      campoResposta.value = "";
-    }
-  };
-  divPergunta.appendChild(botaoResposta);
-
-  // Agora adiciona as respostas abaixo da caixa e botão
-  respostas.forEach((r, i) => {
-    const resp = criarResposta(r, texto, i);
-    divRespostas.appendChild(resp);
-  });
-  divPergunta.appendChild(divRespostas);
-
-  lista.appendChild(divPergunta);
-}
-
-function criarResposta(textoResposta, pergunta, index) {
-  const resp = document.createElement("div");
-  resp.classList.add("resposta");
-
-  const span = document.createElement("span");
-  span.innerHTML = textoResposta; // usa innerHTML para renderizar <strong> e data/hora
-  resp.appendChild(span);
-
-  const del = document.createElement("button");
-  del.classList.add("btn-excluir");
-  del.textContent = "✖";
-  del.title = "Excluir resposta";
-  del.onclick = function() { excluirResposta(pergunta, index, resp); };
-  resp.appendChild(del);
-
-  return resp;
-}
-
-function salvarResposta(pergunta, resposta) {
-  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
-  if (!dados[pergunta]) {
-    dados[pergunta] = [];
-  }
-  dados[pergunta].push(resposta);
-  localStorage.setItem("respostas", JSON.stringify(dados));
-  return dados[pergunta].length - 1;
-}
-
-function excluirResposta(pergunta, index, elementoDOM) {
-  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
-  if (!dados[pergunta]) return;
-  dados[pergunta].splice(index, 1);
-  localStorage.setItem("respostas", JSON.stringify(dados));
-  elementoDOM.remove(); // remove do DOM sem reload
-}
-
-function limparRespostas() {
-  if (!confirm("Tem certeza que deseja apagar todas as respostas?")) return;
-  localStorage.removeItem("respostas");
-  document.getElementById("lista-perguntas").innerHTML = "";
-  perguntasFixas.forEach(p => mostrarPergunta(p, []));
-}
-
-function enviarParaWhatsApp() {
-  const numero = document.getElementById("numeroWhatsApp").value.trim();
-  if (!numero) {
-    alert("Por favor, digite seu número do WhatsApp.");
-    return;
-  }
-
-  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
-  let mensagem = `Respostas de ${nomeGlobal}:\n\n`;
-
-  perguntasFixas.forEach(pergunta => {
-    if (dados[pergunta] && dados[pergunta].length > 0) {
-      mensagem += `${pergunta}\n`;
-      dados[pergunta].forEach(resposta => {
-        // Remover tags HTML para texto plano
-        const respostaTexto = resposta.replace(/<[^>]*>/g, '');
-        mensagem += `- ${respostaTexto}\n`;
-      });
-      mensagem += '\n';
-    }
-  });
-
-  if (mensagem === `Respostas de ${nomeGlobal}:\n\n`) {
-    alert("Não há respostas para enviar.");
-    return;
-  }
-
-  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-  window.open(url, '_blank');
-}
-
-function exportRespostas() {
-  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
-  const blob = new Blob([JSON.stringify(dados, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "respostas.json";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-}
 </script>
+
 </body>
 </html>
-

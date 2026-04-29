@@ -1,330 +1,248 @@
-﻿<head>
-  <meta lang="pt-BR">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QM01</title>
-  <style>
-    @media (max-width: 600px) { h1 { font-size: 1.5em; /* diminui título em telas pequenas */ }
-  .resposta { margin-left: 10px; padding-left: 5px; /* ajusta margens e padding para telas pequenas */ }
-  textarea { height: 25px; /* diminui altura do textarea em telas pequenas */ }
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Questionário de Porcentagem</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #974c216e;
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 20px;
 }
 
-body {
-            background-color: #33130044;
-            font-family: Arial, sans-serif;
-            margin: 0 auto;
-            max-width: 1080px;
-            min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        a {
-            color: #1e724d;
-            word-break: break-word;
-        }
-
-        ul {
-            padding-left: 1.2rem;
-        }
-
-        @media (max-width: 900px) {
-            body {
-                padding: 16px;
-            }
-        }
-
-        @media (max-width: 620px) {
-            body {
-                padding: 12px;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-            ul {
-                padding-left: 1rem;
-            }
-        }
+h1 {
+    text-align: center;
+}
 
 .pergunta {
-  margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .resposta {
-  background-color: #5767641b;
-  margin-left: 20px;
-  border-left: 2px solid hsl(114, 79%, 21%);
-  padding-left: 10px;
-  margin-top: 5px;
-}
-
-textarea {
-  background-color: #2877661b;
-  width: 100%;
-  height: 30px;
-  margin-top: 10px;
+    background-color: rgb(165, 145, 132);
+    font-family: Arial, sans-serif;
+    width: 100%;
+    min-height: 40px;
+    padding: 5px;
+    resize: none;
 }
 
 button {
-  margin-top: 5px;
-  padding: 6px 12px;
-  background: #33130044;
-  color: rgb(0, 0, 0);
-  border: none;
-  cursor: pointer;
+    background-color: #3816036e;
+    margin-top: 10px;
+    padding: 8px 14px;
+    cursor: pointer;
 }
 
-button:hover {
-  background: #33130083;
+:active button {
+    background-color: #30250388;
 }
 
-.btn-excluir {
-  margin-left: 10px;
-  background: #33130044;
+#resultadoFinal {
+    margin-top: 30px;
+    padding: 15px;
+    border-top: 2px solid black;
 }
 
-.dataHora {
-  font-size: 0.9em;
-  color: #1b000044;
-  margin-left: 10px;
+.correto {
+    color: green;
 }
 
-#nomeUsuario {
-  background-color: #2877661b;
-  font-weight: bold;
-  color: #000000;
+.errado {
+    color: red;
 }
-  </style>
+</style>
 </head>
+
 <body>
-  <h1>QM01 - Porcentagem</h1>
 
-  <!-- Campo de nome global -->
-  <input type="text" id="nomeUsuario" placeholder="Digite seu nome...">
-  <button id="confirmarNome">Confirmar Nome</button>
+<h1>Questionário de Porcentagem</h1>
 
-  <div id="lista-perguntas"></div>
+<div id="questionario"></div>
 
-  <button id="exportar">Exportar Respostas</button>
-  <button id="limpar">Limpar Respostas</button>
+<button onclick="mostrarRespostas()">Corrigir</button>
 
-  <!-- Campo para número do WhatsApp -->
-  <input type="text" id="numeroWhatsApp" placeholder="Digite seu número do WhatsApp (ex: 5511999999999)">
-  <button id="enviarWhatsApp">Enviar Respostas para WhatsApp</button>
-  
-  <script>
-  // Variável global para armazenar o nome
-let nomeGlobal = "Anônimo";
+<div id="resultadoFinal"></div>
 
-// Perguntas fixas definidas pelo criador
+<script>
+
+let nomeGlobal = "Thedu";
+
+// PERGUNTAS
 const perguntasFixas = [
 "01: Em quais situações se usa porcentagem?",
-      "02: O que é porcentagem?",
-      "03: Quais são os três tipos de porcentagem?",
-      "04: Dê um exemplo de cada um dos três tipos de porcentagem:",
-      "05: Converta as seguintes porcentagens para número decimal: a) 45%",
-      "05: b) 24%",
-      "05: c) 12%",
-      "05: d) 87%",
-      "05: e) 60%",
-      "06: Converta de porcentagem para fração e simplifique quando possível: a) 32%",
-      "06: b) 63%",
-      "06: c) 14%",
-      "06: d) 52%",
-      "06: e) 13%",
-      "07: De decimal para porcentagem: a) 0,2",
-      "07: b) 0,15",
-      "07: c) 0,8",
-      "07: d) 0,64",
-      "07: e) 0,21",
-      "08: De fração para porcentagem: a) 2/3",
-      "08: b) 4/10",
-      "08: c) 6/8",
-      "08: d) 5/10",
-      "08: e) 25/2",
-      "09: Calcule a porcentagem de um valor: a) 8% de 100",
-      "09: b) 7% de 500",
-      "09: c) 42% de 200",
-      "09: d) 2% de 10",
-      "09: e) 15% de 300",
-      "09: f) 81% de 1000",
-      "09: g) 13% de 800",
-      "09: h) 63% de 84",
-      "10: Calcule o novo valor do produto com desconto ou aumento: a) Desconto de 2% em uma caneta de R$8,00",
-      "10: b) Desconto de 15% em uma mala de R$55,00",
-      "10: c) Fatura de R$87,00 terá um aumento de 3% no próximo mês",
-      "10: d) Mensalidade de R$1.560 terá aumento de 7%",
-      "10: e) Desconto de 75% em uma blusa de R$350,00",
-      "10: f) Salário médio de R$1.650,00 terá aumento de 12%",
-      "10: g) Custos com saúde de R$300,00 aumentarão 15%",
-      "10: h) Desconto de 32% em uma bolsa de R$99,00",
-      "11: Qual é a porcentagem de X em relação a Y quando: a) X=15 Y=200",
-      "11: b) X=12 Y=56",
-      "11: c) X=84 Y=500",
-      "11: d) X=13 Y=100",
-      "11: e) X=2 Y=200",
-      "11: f) X=12 Y=76"
+"02: O que é porcentagem?",
+"03: Quais são os três tipos de porcentagem?",
+"04: Dê um exemplo de cada tipo",
+"05: Converta as seguintes porcentagens para número decimal:<br><br>a) 45%",
+"05b: 24%",
+"05c: 12%",
+"05d: 87%",
+"05e: 60%",
+"06: Converta de porcentagem para fração e simplifique quando possível:<br><br>a) 32%",
+"06: b) 63%",
+"06: c) 14%",
+"06: d) 52%",
+"06: e) 13%",
+"<br>07: De decimal para porcentagem: <br><br>a) 0,2",
+"07: b) 0,15",
+"07: c) 0,8",
+"07: d) 0,64",
+"07: e) 0,21",
+"08: De fração para porcentagem.<br><br>a) 2/3",
+"08: b) 4/10",
+"08: c) 6/8",
+"08: d) 5/10",
+"08: e) 25/2",
+"09: Calcule a porcentagem de um valor:<br><br>a) 8% de 100",
+"09: b) 7% de 500",
+"09: c) 42% de 200",
+"09: d) 2% de 10",
+"09: e) 15% de 300",
+"09: f) 81% de 1000",
+"09: g) 13% de 800",
+"09: h) 63% de 84",
+"10: Calcule o novo valor do produto com desconto ou aumento: <br><br>a) Desconto de 2% em uma caneta de R$8,00",
+"10: b) Desconto de 15% em uma mala de R$55,00",
+"10: c) Fatura de R$87,00 terá um aumento de 3% no próximo mês",
+"10: d) Mensalidade de R$1.560 terá aumento de 7%",
+"10: e) Desconto de 75% em uma blusa de R$350,00",
+"10: f) Salário médio de R$1.650,00 terá aumento de 12%",
+"10: g) Custos com saúde de R$300,00 aumentarão 15%",
+"10: h) Desconto de 32% em uma bolsa de R$99,00",
+"<br>11: Qual é a porcentagem de X em relação a Y quando:<br><br>a) X=15 Y=200",
+"11: b) X=12 Y=56",
+"11: c) X=84 Y=500",
+"11: d) X=13 Y=100",
+"11: e) X=2 Y=200",
+"11: f) X=12 Y=76",
+
 ];
 
-// Carregar respostas salvas
-window.onload = function() {
-  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
-  perguntasFixas.forEach(p => mostrarPergunta(p, dados[p] || []));
+// RESPOSTAS CORRETAS
+const respostasFixas = [
+"Usamos porcentagem em compras, descontos, juros, estatísticas",
+"Porcentagem é uma fração de 100",
+"Percentual, fração e decimal",
+"Ex: 50%, 1/2, 0,5",
+"0,45",
+"0,24",
+"0,12",
+"0,87",
+"0,6",
+"8/25",
+"63/100",
+"7/50",
+"13/25",
+"20%",
+"15%",
+"80%",
+"64%",
+"21%",
+"66,67%",
+"40%",
+"75%",
+"50%",
+"1250%",
+"8",
+"35",
+"84",
+"0,2",
+"45",
+"810",
+"104",
+"52,92",
+"7,84",
+"46,74",
+"89,61",
+"1669,20",
+"87,50",
+"1848",
+"345",
+"67,32",
+"7,5%",
+"21,4%",
+"16,8%",
+"13%",
+"1%",
+"15,8%",
 
-  document.getElementById("exportar").addEventListener("click", exportRespostas);
-  document.getElementById("limpar").addEventListener("click", limparRespostas);
-  document.getElementById("confirmarNome").addEventListener("click", confirmarNome);
-  document.getElementById("enviarWhatsApp").addEventListener("click", enviarParaWhatsApp);
+];
+
+// CRIAR PERGUNTAS
+window.onload = function() {
+    const container = document.getElementById("questionario");
+
+    perguntasFixas.forEach((pergunta, index) => {
+        const div = document.createElement("div");
+        div.classList.add("pergunta");
+
+        const respostaSalva = localStorage.getItem(`resp${index}`) || "";
+
+        div.innerHTML = `
+            <label>${pergunta}</label>
+            <textarea id="resp${index}" class="resposta">${respostaSalva}</textarea>
+        `;
+
+        container.appendChild(div);
+
+        const textarea = document.getElementById(`resp${index}`);
+
+        setTimeout(() => {
+            textarea.style.height = textarea.scrollHeight + "px";
+        }, 0);
+
+        textarea.addEventListener("input", function() {
+            this.style.height = "auto";
+            this.style.height = this.scrollHeight + "px";
+            localStorage.setItem(`resp${index}`, this.value);
+        });
+    });
 };
 
-function confirmarNome() {
-  const nome = document.getElementById("nomeUsuario").value.trim();
-  if (nome !== "") {
-    nomeGlobal = nome;
-    alert("Nome confirmado: " + nomeGlobal);
-  } else {
-    alert("Você não digitou um nome, será usado 'Anônimo'.");
-  }
+// MOSTRAR RESULTADO
+function mostrarRespostas() {
+    const resultadoDiv = document.getElementById("resultadoFinal");
+
+    resultadoDiv.innerHTML = `<h2>Resultado de ${nomeGlobal}</h2>`;
+
+    let acertos = 0;
+
+    perguntasFixas.forEach((pergunta, index) => {
+        const input = document.getElementById(`resp${index}`);
+        const respostaUsuario = input ? input.value.trim() : "";
+
+        const respostaCorreta = respostasFixas[index] || "";
+
+        const acertou = respostaUsuario.toLowerCase() === respostaCorreta.toLowerCase();
+
+        if (acertou) acertos++;
+
+        const div = document.createElement("div");
+
+        div.innerHTML = `
+            <strong>${pergunta}</strong><br>
+            🧑 Sua resposta: ${respostaUsuario || "(vazia)"}<br>
+            ✅ Correta: ${respostaCorreta}<br>
+            <span class="${acertou ? 'correto' : 'errado'}">
+                ${acertou ? "✔ Acertou" : "✘ Errou"}
+            </span>
+            <hr>
+        `;
+
+        resultadoDiv.appendChild(div);
+    });
+
+    const nota = document.createElement("h3");
+    nota.innerText = `Pontuação: ${acertos} / ${perguntasFixas.length}`;
+
+    resultadoDiv.appendChild(nota);
 }
 
-function mostrarPergunta(texto, respostas) {
-  const lista = document.getElementById("lista-perguntas");
-
-  const divPergunta = document.createElement("div");
-  divPergunta.classList.add("pergunta");
-
-  const titulo = document.createElement("h3");
-  titulo.textContent = texto;
-  divPergunta.appendChild(titulo);
-
-  // Caixa de resposta
-  const campoResposta = document.createElement("textarea");
-  campoResposta.placeholder = "Digite sua resposta...";
-  divPergunta.appendChild(campoResposta);
-
-  // Botão de resposta
-  const botaoResposta = document.createElement("button");
-  botaoResposta.textContent = "Responder";
-
-  // Div para respostas (abaixo da caixa e botão)
-  const divRespostas = document.createElement("div");
-
-  botaoResposta.onclick = function() {
-    const textoResposta = campoResposta.value.trim();
-    if (textoResposta !== "") {
-      const dataHora = new Date().toLocaleString("pt-BR");
-      const respostaFormatada = `<strong>${nomeGlobal}</strong> respondeu: ${textoResposta} <span class="dataHora">(${dataHora})</span>`;
-      const idx = salvarResposta(texto, respostaFormatada);
-
-      const resp = criarResposta(respostaFormatada, texto, idx);
-      divRespostas.appendChild(resp);
-      campoResposta.value = "";
-    }
-  };
-  divPergunta.appendChild(botaoResposta);
-
-  // Agora adiciona as respostas abaixo da caixa e botão
-  respostas.forEach((r, i) => {
-    const resp = criarResposta(r, texto, i);
-    divRespostas.appendChild(resp);
-  });
-  divPergunta.appendChild(divRespostas);
-
-  lista.appendChild(divPergunta);
-}
-
-function criarResposta(textoResposta, pergunta, index) {
-  const resp = document.createElement("div");
-  resp.classList.add("resposta");
-
-  const span = document.createElement("span");
-  span.innerHTML = textoResposta; // usa innerHTML para renderizar <strong> e data/hora
-  resp.appendChild(span);
-
-  const del = document.createElement("button");
-  del.classList.add("btn-excluir");
-  del.textContent = "✖";
-  del.title = "Excluir resposta";
-  del.onclick = function() { excluirResposta(pergunta, index, resp); };
-  resp.appendChild(del);
-
-  return resp;
-}
-
-function salvarResposta(pergunta, resposta) {
-  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
-  if (!dados[pergunta]) {
-    dados[pergunta] = [];
-  }
-  dados[pergunta].push(resposta);
-  localStorage.setItem("respostas", JSON.stringify(dados));
-  return dados[pergunta].length - 1;
-}
-
-function excluirResposta(pergunta, index, elementoDOM) {
-  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
-  if (!dados[pergunta]) return;
-  dados[pergunta].splice(index, 1);
-  localStorage.setItem("respostas", JSON.stringify(dados));
-  elementoDOM.remove(); // remove do DOM sem reload
-}
-
-function limparRespostas() {
-  if (!confirm("Tem certeza que deseja apagar todas as respostas?")) return;
-  localStorage.removeItem("respostas");
-  document.getElementById("lista-perguntas").innerHTML = "";
-  perguntasFixas.forEach(p => mostrarPergunta(p, []));
-}
-
-function enviarParaWhatsApp() {
-  const numero = document.getElementById("numeroWhatsApp").value.trim();
-  if (!numero) {
-    alert("Por favor, digite seu número do WhatsApp.");
-    return;
-  }
-
-  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
-  let mensagem = `Respostas de ${nomeGlobal}:\n\n`;
-
-  perguntasFixas.forEach(pergunta => {
-    if (dados[pergunta] && dados[pergunta].length > 0) {
-      mensagem += `${pergunta}\n`;
-      dados[pergunta].forEach(resposta => {
-        // Remover tags HTML para texto plano
-        const respostaTexto = resposta.replace(/<[^>]*>/g, '');
-        mensagem += `- ${respostaTexto}\n`;
-      });
-      mensagem += '\n';
-    }
-  });
-
-  if (mensagem === `Respostas de ${nomeGlobal}:\n\n`) {
-    alert("Não há respostas para enviar.");
-    return;
-  }
-
-  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-  window.open(url, '_blank');
-}
-
-function exportRespostas() {
-  const dados = JSON.parse(localStorage.getItem("respostas")) || {};
-  const blob = new Blob([JSON.stringify(dados, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "respostas.json";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-}
 </script>
-</body>
-</html><!DOCTYPE html>
-<ht
 
+</body>
+</html>

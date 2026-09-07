@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hisória</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: #33130044;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            max-width: 1080px;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        a {
+            color: #1e724d;
+            word-break: break-word;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            body {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            ul {
+                padding-left: 1rem;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* duas colunas */
+            gap: 20px;
+        }
+
+        .coluna2 p {
+            counter-increment: respostas; /* incrementa contador */
+        }
+
+        .coluna2 {
+            counter-reset: respostas; /* inicia contador */
+        }
+
+        .coluna2 p::before {
+            content: counter(respostas) ". "; /* mostra número antes do texto */
+            font-weight: bold;
+        }
+
+    </style>
+
+<h1>Idade antiga</h1>
+<h2>Responda as seguintes questões:</h2>
+<p>01) O que marcou o início da Idade Antiga?</p>
+<p>02) Quais as 6 grandes civilizações da Idade Antiga?</p>
+<p>03) O que foi o Direito romano, a Pax romana, e as guerras púnicas?</p>
+<p>04) Como era a vida em Atenas e em Esparta? Onde estavam localizadas?</p>
+<p>05) Por que a mesopotâmia foi dominada por tantos povos?</p>
+<p>06) O que levou o egito antigo ao seu avanço em medicina?</p>
+<p>07) Explique o período helenistico, a guerra do Peloponeso e as guerras médicas (Por que do nome guerras medicas).</p>
+<p>08) O que marcou o fim da Idade Antiga? E como esse fim se deu?</p>
+
+<h2>Assinale as colunas corretamente.</h2>
+<div class="grid">
+  <div class="coluna1">
+    <p>(01) Mesopotâmia</p>
+    <p>(02) Egito antigo</p>
+    <p>(03) Gre-écia antiga</p>
+    <p>(04) Roma antiga</p>
+    <p>(05) Hebreus</p>
+    <p>(06) Civilizações orientais</p>
+  </div>
+  <div class="coluna2">
+    <p>( ) Código de Hamurabi</p>
+    <p>( ) Faraós, pirâmides, Creópatra</p>
+    <p>( ) Alexandre o grande</p>
+    <p>( ) Júlio César</p>
+    <p>( ) Império Acádio</p>
+    <p>( ) Monoteísmo</p>
+    <p>( ) Fundação do reino de Israel</p>
+    <p>( ) China</p>
+    <p>( ) Primeiras cidades-estado</p>
+    <p>( ) Matematica e medicina</p>
+    <p>( ) Índia</p>
+    <p>( ) Jogos olímpicos</p>
+    <p>( ) Filosofia e mitologia</p>
+    <p>( ) Pólis</p>
+    <p>( ) Hierógrafos</p>
+  </div>
+</div>
+
+<h2>Para garantir que aprendeu!</h2>
+<p>Surgindo o homem, se tornando sedentário e dominando o mundo ao seu redor, juntando-se em aldeias, a qual levou a formação das grandes cidades conhecidas na idade antiga, quais são as semelhanças e diferenças na forma de governo delas e a nossa atual forma de governo? Como fomos influenciados por essas formas de governo? Como fomos influênciados? Comente.</p>
+
+
+
+<script>
+    alert("Responda no caderno COM LETRA LEGÍVEL, em seguida envie para correção.");
+
+</script> 
+</body> 
+</html>

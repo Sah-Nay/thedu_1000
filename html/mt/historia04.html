@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hisória</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: #33130044;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            max-width: 1080px;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        a {
+            color: #1e724d;
+            word-break: break-word;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            body {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            ul {
+                padding-left: 1rem;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* duas colunas */
+            gap: 20px;
+        }
+
+        .coluna2 p {
+            counter-increment: respostas; /* incrementa contador */
+        }
+
+        .coluna2 {
+            counter-reset: respostas; /* inicia contador */
+        }
+
+        .coluna2 p::before {
+            content: counter(respostas) ". "; /* mostra número antes do texto */
+            font-weight: bold;
+        }
+
+    </style>
+
+<h1>Idade moderna</h1>
+<h2>Responda as seguintes questões:</h2>
+<p>01) O que marcou o início da Idade Moderna? Como isso ocorreu?</p>
+<p>02) O que foi o renascimento cultural e científico?</p>
+<p>03) Explique a reforma protestante e a contrarreforma.</p>
+<p>04) Qual foi o impacto da invenção da imprensa na Idade Moderna?</p>
+<p>05) Explique o Iluminismo e a revolução cientifica</p>
+<p>06) Fale sobre o absolutismo durante a idade moderna.</p>
+<p>O que foi a primeira revolução industrial?</p>
+
+<h2>Para garantir que aprendeu!</h2>
+<p>Após um longo período deinfluência da igreja, e limitações imposta por governantes absolutistas, brilhou a luz da razão e do conhecimento. Também foi nesse período em que ocorreram as grandes navegações, abrindo as portas para os novos problemas, agora os da atualidade. Após chegar até aqui, seguindo a linha histórica, como todos esses acontecimentos nos trouxeram ao futuro/presente? Em que momento a sociedade errou? Comente.</p>
+
+
+
+<script>
+    alert("Responda no caderno COM LETRA LEGÍVEL, em seguida envie para correção.");
+
+</script>
+</body>
+</html>

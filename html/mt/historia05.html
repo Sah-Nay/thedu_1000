@@ -1,0 +1,94 @@
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hisória</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: #33130044;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            max-width: 1080px;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        a {
+            color: #1e724d;
+            word-break: break-word;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            body {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            ul {
+                padding-left: 1rem;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* duas colunas */
+            gap: 20px;
+        }
+
+        .coluna2 p {
+            counter-increment: respostas; /* incrementa contador */
+        }
+
+        .coluna2 {
+            counter-reset: respostas; /* inicia contador */
+        }
+
+        .coluna2 p::before {
+            content: counter(respostas) ". "; /* mostra número antes do texto */
+            font-weight: bold;
+        }
+
+    </style>
+
+<h1>Idade contemporânea</h1>
+<h2>Responda as seguintes questões:</h2>
+<p>01) O que foi a era Napoleônica?</p>
+<p>02) Comente sobre a segunda, terceira e quarta revolução indústrial</p>
+<p>03) O que foi o colonialismo e o neocolonialismo?</p>
+<p>04) O que foi o congresso de Viena?</p>
+<p>05) O que levou a primeira guerra mundial? Comente sobre ela.</p>
+<p>06) Fale sobre a crise de 1929.</p>
+<p>07) O que levou a ascensão dos regimes totalitas no pós guerra?</p>
+<p>08) Quais forma os eventos que levaram a seguda guerra mundial?</p>
+<p>Comente sobre a guerra fria.</p>
+<p>Fale sobre a pandemia de Covid-19.</p>
+
+<h2>Para garantir que aprendeu!</h2>
+<p>Pensando na história da humanidade e no rumo ao qual caminhamos, o que marcará o fim da idade contemporânea? e quais são os possíveis eventos que levarão ao seu fim?</p>
+
+
+
+<script>
+    alert("Responda no caderno COM LETRA LEGÍVEL, em seguida envie para correção.");
+
+</script>
+</body>
+</html>

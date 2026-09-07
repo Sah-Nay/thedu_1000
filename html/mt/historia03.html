@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hisória</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: #33130044;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            max-width: 1080px;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        a {
+            color: #1e724d;
+            word-break: break-word;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            body {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            ul {
+                padding-left: 1rem;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* duas colunas */
+            gap: 20px;
+        }
+
+        .coluna2 p {
+            counter-increment: respostas; /* incrementa contador */
+        }
+
+        .coluna2 {
+            counter-reset: respostas; /* inicia contador */
+        }
+
+        .coluna2 p::before {
+            content: counter(respostas) ". "; /* mostra número antes do texto */
+            font-weight: bold;
+        }
+
+    </style>
+
+<h1>Idade média</h1>
+<h2>Responda as seguintes questões:</h2>
+<p>01) A idade média é dividida em "Alta idade média" e "Baixa idade média", explique as diferenças entre elas, e como foi cada um desses períodos.</p>
+<p>02) O que foi a batalha de Poitier? Como está relacionada ao Islã?</p>
+<p>03) Fale sobre o Império carolíngio e o tratado de Verdun.</p>
+<p>04) Explique o que foi o feudalismo e como ele se desenvolveu na idade média.</p>
+<p>05) Como a igreja católica agia na idade média?</p>
+<p>06) O que foi o cisma do Oriente?</p>
+<p>07) Explique o renascimento comercial e urbano da baixa idade média.</p>
+<p>08) O que marcou o fim da idade média?</p>
+
+<h2>Assinale as colunas corretamente.</h2>
+<div class="grid">
+  <div class="coluna1">
+    <p>(01) Alta idade média</p>
+    <p>(02) Baixa idade média</p>
+  </div>
+  <div class="coluna2">
+    <p>( ) Surgimento do Islãmismo</p>
+    <p>( ) Cruzadas e investiduras</p>
+    <p>( ) Indulgencias</p>
+    <p>( ) Queda de Roma</p>
+    <p>( ) Santa inquisição</p>
+    <p>( ) Peste negra</p>
+    <p>( ) Primeira revolução agrícola</p>
+  </div>
+</div>
+
+<h2>Para garantir que aprendeu!</h2>
+<p>A idade média foi o período em que a igreja teve maior influência na população, consolidando o feudalismo, sendo a principal senhora feudau, e também levando ao declínio do feudalismo, abrindo as portas para a idade moderna. Em sua opinião, o quanto a igreja influenciou na vida das pessoas durante esse período? E em que momento foi dada a ela tanto poder? O que fez da igreja uma força dominante na sociedade nesse período?</p>
+
+
+
+<script>
+    alert("Responda no caderno COM LETRA LEGÍVEL, em seguida envie para correção.");
+
+</script>
+</body>
+</html>

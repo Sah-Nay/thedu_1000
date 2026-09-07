@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hisória</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: #33130044;
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            max-width: 1080px;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        a {
+            color: #1e724d;
+            word-break: break-word;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            body {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            ul {
+                padding-left: 1rem;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* duas colunas */
+            gap: 20px;
+        }
+
+        .coluna2 p {
+            counter-increment: respostas; /* incrementa contador */
+        }
+
+        .coluna2 {
+            counter-reset: respostas; /* inicia contador */
+        }
+
+        .coluna2 p::before {
+            content: counter(respostas) ". "; /* mostra número antes do texto */
+            font-weight: bold;
+        }
+
+    </style>
+
+<h1>Pré-história</h1>
+<h2>Responda as seguintes questões:</h2>
+<p>01) Explique o que foi e como era a vida na pré-história.</p>
+<p>02) A pré história é dividida em três períodos. Em ordem, quais são eles?</p>
+<p>03) O período paleolítico é também conhecido como...?</p>
+<p>04) Como era a vida no período paleolítico? E qual foi a principal grande descoberta feita por eles?</p>
+<p>05) O período neolítico é também conhecido como...?</p>
+<p>06) Como era a vida no período neolítico? Como ela se diferenciava da vida no período paleolítico?</p>
+<p>07) Comente sobre a vida na idade dos metais, levando em conta o aumento populacional e as primeiras aldeias.</p>
+<p>08) O que foi a primeira revolução agrícola? Comente.</p>
+
+<h2>Assinale as colunas corretamente.</h2>
+<div class="grid">
+  <div class="coluna1">
+    <p>(01) Paleolítico</p>
+    <p>(02) Neolítico</p>
+    <p>(03) Idade dos Metais</p>
+  </div>
+  <div class="coluna2">
+    <p>( ) Crescimento das aldeias</p>
+    <p>( ) Paleolítico</p>
+    <p>( ) Descoberta do fogo</p>
+    <p>( ) Cerâmica e tecelagem</p>
+    <p>( ) Desigualdade social</p>
+    <p>( ) Agricultura</p>
+    <p>( ) Sedentarismo</p>
+    <p>( ) Neolítico</p>
+    <p>( ) Primeiras aldeias</p>
+    <p>( ) Caça, pescaria e coleta</p>
+    <p>( ) Nomades</p>
+    <p>( ) Primeira revolução agrícola</p>
+  </div>
+</div>
+
+<h2>Para garantir que aprendeu!</h2>
+<p>Agora que já se aprofundou na pré-história, e entendeu sobre os diferentes períodos que foi dividido, imagine que você estava lá em durante toda a pré-história, e explique com suas palavras como era a vida desde o surgimento do homem, até quando começou a se fixar criando aldeias e em fim crescer e tornar-se grandes cidades. Agora você é um homem pré-histórico! Boa viagem.</p>
+
+
+
+<script>
+    alert("Responda no caderno COM LETRA LEGÍVEL, em seguida envie para correção.");
+
+</script>
+</body>
+</html>

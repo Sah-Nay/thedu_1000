@@ -15,7 +15,7 @@ cells.forEach(cell => {
 
 // Verifica se a mensagem de boas-vindas já foi mostrada nesta sessão
 if (!sessionStorage.getItem("welcomeShown")) {
-  alert("Bem-vindo à página! Clique em uma célula para selecioná-la. Sua seleção será lembrada mesmo se você recarregar a página.");
+  alert("Você consegue! Está quase lá. ❤️😈😈");
   sessionStorage.setItem("welcomeShown", "true");
 }
 
